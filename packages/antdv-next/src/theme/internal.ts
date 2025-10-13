@@ -16,10 +16,10 @@ import { genCalc as calc, useStyleRegister } from '@antdv-next/cssinjs'
 import { mergeToken, statistic, statisticToken } from '@antdv-next/cssinjs/cssinjs-utils'
 import { PresetColors } from './interface'
 import { getLineHeight } from './themes/shared/genFontSizes'
-// import useToken from './useToken'
+import useToken from './useToken'
 import genPresetColor from './util/genPresetColor'
-// import { genComponentStyleHook, genStyleHooks, genSubStyleComponent } from './util/genStyleUtils'
-// import useResetIconStyle from './util/useResetIconStyle'
+import { genComponentStyleHook, genStyleHooks, genSubStyleComponent } from './util/genStyleUtils'
+import useResetIconStyle from './util/useResetIconStyle'
 
 // export { defaultConfig, DesignTokenContext } from './context'
 
@@ -27,10 +27,10 @@ export type { CSSUtil, TokenWithCommonCls } from '@antdv-next/cssinjs/cssinjs-ut
 export {
   calc,
   // generators
-  // genComponentStyleHook,
+  genComponentStyleHook,
   genPresetColor,
-  // genStyleHooks,
-  // genSubStyleComponent,
+  genStyleHooks,
+  genSubStyleComponent,
   getLineHeight,
   // utils
   mergeToken,
@@ -39,9 +39,9 @@ export {
   statistic,
   statisticToken,
   // hooks
-  // useResetIconStyle,
+  useResetIconStyle,
   useStyleRegister,
-  // useToken,
+  useToken,
 }
 export type {
   AliasToken,

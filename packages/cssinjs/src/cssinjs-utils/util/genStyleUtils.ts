@@ -1,5 +1,4 @@
 import type { TokenType } from '../../theme'
-import type { UseTokenReturn } from '../hooks/useToken'
 import type { TokenMap, TokenMapKey, UseComponentStyleResult } from '../interface'
 import type {
   GenStyleFn,
@@ -9,7 +8,7 @@ import type {
   GetDefaultToken,
   StyleInfo,
 } from './genStyleUtils.types'
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, unref } from 'vue'
 import useCSSVarRegister from '../../hooks/useCSSVarRegister'
 import useStyleRegister from '../../hooks/useStyleRegister'
 import genCalc from '../../theme/calc'
@@ -51,31 +50,36 @@ function genStyleUtils<
     },
   ) {
     return (rootCls: string) => {
-      const tokenData = useToken() as UseTokenReturn<CompTokenMap, AliasToken, DesignToken>
-      const cssVar = tokenData.cssVar
-      const realToken = tokenData.realToken ?? tokenData.token
+      const tokenData = useToken()
+      const { cssVar, realToken, token } = tokenData
+      const finalRealToken = realToken ?? token
 
-      if (options.injectStyle !== false && cssVar?.key) {
-        const registerConfig = computed(() => ({
-          path: [component as string],
-          prefix: cssVar.prefix,
-          key: cssVar.key!,
-          unitless: options.unitless,
-          ignore: options.ignore,
-          token: realToken,
-          scope: rootCls,
-        }))
+      const hasCSSVar = computed(() => unref(cssVar)?.key)
+
+      if (options.injectStyle !== false && hasCSSVar.value) {
+        const registerConfig = computed(() => {
+          const cssVarValue = unref(cssVar)
+          return {
+            path: [component as string],
+            prefix: cssVarValue?.prefix,
+            key: cssVarValue?.key || '',
+            unitless: options.unitless,
+            ignore: options.ignore,
+            token: unref(finalRealToken),
+            scope: rootCls,
+          }
+        })
 
         useCSSVarRegister(registerConfig as any, () => {
           const defaultToken = getDefaultComponentToken(
             component as any,
-            realToken as any,
+            unref(finalRealToken) as any,
             getDefaultToken as any,
           ) as Record<string, any>
 
           const componentToken = getComponentToken(
             component as any,
-            realToken as any,
+            unref(finalRealToken) as any,
             defaultToken,
             { deprecatedTokens: options.deprecatedTokens as any },
           )
@@ -89,7 +93,7 @@ function genStyleUtils<
         })
       }
 
-      return [(node: any) => node, cssVar?.key] as const
+      return [(node: any) => node, unref(cssVar)?.key] as const
     }
   }
 
@@ -105,87 +109,94 @@ function genStyleUtils<
     const mergedLayer = layer || { name: 'antd' }
 
     return (prefixCls: string, rootCls: string = prefixCls): UseComponentStyleResult => {
-      const tokenData = useToken() as any
-      const {
-        theme,
-        token,
-        realToken = token,
-        hashId = '',
-        cssVar,
-      } = tokenData
+      const tokenData = useToken()
+      const { theme, token, realToken, hashId, cssVar } = tokenData
+      const finalRealToken = realToken ?? token
 
-      const { rootPrefixCls, iconPrefixCls } = usePrefix()
+      const prefix = usePrefix()
+      const iconPrefixCls = computed(() => prefix.value.iconPrefixCls || 'anticon')
+      const rootPrefixCls = computed(() => prefix.value.rootPrefixCls || 'ant')
       const csp = useCSP()
 
-      const type: 'css' | 'js' = cssVar ? 'css' : 'js'
+      const type = computed<'css' | 'js'>(() => unref(cssVar) ? 'css' : 'js')
 
       const calc = useUniqueMemo(() => {
         const unitlessCssVar = new Set<string>()
-        if (cssVar) {
+        const cssVarValue = unref(cssVar)
+        if (cssVarValue) {
           const unitlessMap = (getCompUnitless && getCompUnitless(componentName as any)) || {}
           Object.keys(unitlessMap).forEach((key) => {
-            unitlessCssVar.add(token2CSSVar(key, cssVar.prefix))
-            unitlessCssVar.add(token2CSSVar(key, getCompVarPrefix(componentAlias as any, cssVar.prefix)))
+            unitlessCssVar.add(token2CSSVar(key, cssVarValue.prefix))
+            unitlessCssVar.add(token2CSSVar(key, getCompVarPrefix(componentAlias as any, cssVarValue.prefix)))
           })
         }
 
-        return genCalc(type, unitlessCssVar)
-      }, [type, componentAlias, cssVar?.prefix])
+        return genCalc(type.value, unitlessCssVar)
+      }, [type, componentAlias, unref(cssVar)?.prefix])
 
-      const { max, min } = genMaxMin(type)
+      const { max, min } = genMaxMin(type.value)
 
       if (typeof getResetStyles === 'function') {
         useStyleRegister(
           computed(() => ({
-            theme,
-            token,
-            hashId,
-            nonce: csp?.nonce,
+            theme: unref(theme)!,
+            token: unref(token),
+            hashId: unref(hashId),
+            nonce: unref(csp)?.nonce,
             clientOnly: false,
             layer: mergedLayer,
             order: options.order ?? -999,
-            path: ['Shared', rootPrefixCls],
+            path: ['Shared', rootPrefixCls.value],
           })),
-          () => getResetStyles(token, { prefix: { rootPrefixCls, iconPrefixCls }, csp }),
+          () => getResetStyles(
+            unref(token),
+            {
+              prefix: { rootPrefixCls: rootPrefixCls.value, iconPrefixCls: iconPrefixCls.value },
+              csp: csp.value,
+            },
+          ),
         )
       }
 
       const wrapSSR = useStyleRegister(
         computed(() => ({
-          theme,
-          token,
-          hashId,
-          nonce: csp?.nonce,
+          theme: unref(theme)!,
+          token: unref(token),
+          hashId: unref(hashId),
+          nonce: unref(csp)?.nonce,
           clientOnly: options.clientOnly,
           layer: mergedLayer,
           order: options.order ?? -999,
-          path: [cells.join('-'), prefixCls, iconPrefixCls],
+          path: [cells.join('-'), prefixCls, iconPrefixCls.value],
         })),
         () => {
           if (options.injectStyle === false) {
             return []
           }
 
-          const { token: proxyToken, flush } = statisticToken(token as any)
+          const tokenValue = unref(token)
+          const { token: proxyToken, flush } = statisticToken(tokenValue as any)
 
+          const realTokenValue = unref(finalRealToken)
           const defaultComponentToken = getDefaultComponentToken(
             component as any,
-            realToken as any,
+            realTokenValue as any,
             getDefaultToken as any,
           ) as Record<string, any>
 
           const componentToken = getComponentToken(
             component as any,
-            realToken as any,
+            realTokenValue as any,
             defaultComponentToken,
             { deprecatedTokens: options.deprecatedTokens as any },
           )
 
-          if (cssVar && defaultComponentToken && typeof defaultComponentToken === 'object') {
+          const cssVarValue = unref(cssVar)
+          if (cssVarValue && defaultComponentToken && typeof defaultComponentToken === 'object') {
             Object.keys(defaultComponentToken).forEach((key) => {
               defaultComponentToken[key] = `var(${token2CSSVar(
                 key,
-                getCompVarPrefix(componentAlias as any, cssVar.prefix),
+                getCompVarPrefix(componentAlias as any, cssVarValue.prefix),
               )})`
             })
           }
@@ -195,20 +206,21 @@ function genStyleUtils<
             {
               componentCls: `.${prefixCls}`,
               prefixCls,
-              iconCls: `.${iconPrefixCls}`,
-              antCls: `.${rootPrefixCls}`,
+              iconCls: `.${iconPrefixCls.value}`,
+              antCls: `.${rootPrefixCls.value}`,
               calc,
               max,
               min,
             },
-            cssVar ? defaultComponentToken : componentToken,
+            cssVarValue ? defaultComponentToken : componentToken,
           )
 
+          const hashIdValue = unref(hashId)
           const styleInterpolation = styleFn(mergedToken as any, {
-            hashId,
+            hashId: hashIdValue,
             prefixCls,
-            rootPrefixCls,
-            iconPrefixCls,
+            rootPrefixCls: rootPrefixCls.value,
+            iconPrefixCls: iconPrefixCls.value,
           } as StyleInfo)
 
           flush(componentAlias as any, componentToken)
@@ -238,7 +250,7 @@ function genStyleUtils<
 
       const wrapAll = (node: any) => wrapCSSVar(wrapSSR(node))
 
-      return [wrapAll, hashId, cssVarCls] as UseComponentStyleResult
+      return [wrapAll, unref(hashId) || '', cssVarCls] as UseComponentStyleResult
     }
   }
 

@@ -5,6 +5,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@antdv-next/cssinjs": ["../packages/cssinjs/src/index.ts"],
+      "@antdv-next/cssinjs/cssinjs-utils": ["../packages/cssinjs/src/cssinjs-utils/index.ts"],
       "antdv-next": ["../packages/antdv-next/src/index.ts"]
     },
     "types": ["vite/client"],
@@ -17,5 +18,13 @@
     "erasableSyntaxOnly": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "files": [
+    "types/antd.d.ts",
+    "types/vite-env.d.ts"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ]
 }

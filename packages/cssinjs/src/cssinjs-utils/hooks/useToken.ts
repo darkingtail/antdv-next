@@ -1,3 +1,4 @@
+import type { Ref } from 'vue'
 import type { Theme, TokenType } from '../../theme'
 import type { GlobalToken, OverrideTokenMap, TokenMap } from '../interface'
 
@@ -19,16 +20,16 @@ export interface UseTokenReturn<
   AliasToken extends TokenType,
   DesignToken extends TokenType,
 > {
-  token: GlobalToken<CompTokenMap, AliasToken>
-  realToken?: GlobalToken<CompTokenMap, AliasToken>
-  theme?: Theme<DesignToken, AliasToken>
-  components?: TokenMapWithTheme<CompTokenMap, DesignToken, AliasToken>
-  hashId?: string
-  hashed?: string | boolean
-  cssVar?: {
+  token: Ref<GlobalToken<CompTokenMap, AliasToken>>
+  realToken?: Ref <GlobalToken<CompTokenMap, AliasToken>>
+  theme?: Ref<Theme<DesignToken, AliasToken>>
+  components?: Ref<TokenMapWithTheme<CompTokenMap, DesignToken, AliasToken>>
+  hashId?: Ref<string>
+  hashed?: Ref<string | boolean>
+  cssVar?: Ref<{
     prefix?: string
     key?: string
-  }
+  }>
 }
 
 export type UseToken<

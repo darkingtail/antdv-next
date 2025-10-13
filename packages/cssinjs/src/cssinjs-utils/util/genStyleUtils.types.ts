@@ -1,3 +1,4 @@
+import type { UnwrapRef } from 'vue'
 import type { CSSInterpolation, CSSObject } from '../../hooks/useStyleRegister'
 import type { TokenType } from '../../theme'
 import type { UseCSP } from '../hooks/useCSP'
@@ -70,8 +71,8 @@ export interface CSSVarRegisterProps {
 }
 
 export interface GetResetStylesConfig {
-  prefix: ReturnType<UsePrefix>
-  csp: ReturnType<UseCSP>
+  prefix: UnwrapRef<ReturnType<UsePrefix>>
+  csp: UnwrapRef<ReturnType<UseCSP>>
 }
 
 export type GetResetStyles<AliasToken extends TokenType> = (

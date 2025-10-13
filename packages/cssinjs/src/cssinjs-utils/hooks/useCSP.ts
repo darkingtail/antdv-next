@@ -1,7 +1,10 @@
-export type UseCSP = () => {
-  nonce?: string
-}
+import type { Ref } from 'vue'
+import { ref } from 'vue'
 
-const useDefaultCSP: UseCSP = () => ({})
+export type UseCSP = () => Ref<{
+  nonce?: string
+}>
+
+const useDefaultCSP: UseCSP = () => (ref({}))
 
 export default useDefaultCSP

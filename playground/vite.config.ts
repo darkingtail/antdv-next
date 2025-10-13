@@ -1,14 +1,20 @@
+import * as path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { defineConfig } from 'vite'
+import inspect from 'vite-plugin-inspect'
 
+import { tsxResolveTypes } from 'vite-plugin-tsx-resolve-types'
+
+const baseUrl = fileURLToPath(new URL('.', import.meta.url))
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
+    tsxResolveTypes(),
+    vueJsx(),
     vue(),
-    vueJsx({
-      resolveType: true,
-    }),
+    inspect(),
   ],
   server: {
     port: 3322,
@@ -16,16 +22,16 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: '@antdv-next/cssinjs',
-        replacement: '../packages/cssinjs/src',
+        find: /^antdv-next/,
+        replacement: path.resolve(baseUrl, '../packages/antdv-next/src'),
+      },
+      {
+        find: /^@antdv-next\/cssinjs/,
+        replacement: path.resolve(baseUrl, '../packages/cssinjs/src'),
       },
       {
         find: '@',
         replacement: '/src',
-      },
-      {
-        find: 'antdv-next',
-        replacement: '../packages/antdv-next/src',
       },
     ],
   },

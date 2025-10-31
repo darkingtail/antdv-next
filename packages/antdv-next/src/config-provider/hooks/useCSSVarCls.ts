@@ -10,7 +10,7 @@ import { useToken } from '../../theme/internal'
 function useCSSVarCls(prefixCls: Ref<string>) {
   const [, , , , cssVar] = useToken()
 
-  return computed(() => cssVar?.value ? `${prefixCls}-css-var` : '')
+  return computed(() => cssVar?.value ? `${prefixCls.value}-css-var` : '')
 }
 
 export default useCSSVarCls

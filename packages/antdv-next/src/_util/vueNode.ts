@@ -1,7 +1,8 @@
 import type { VNodeChild } from 'vue'
 import type { AnyObject, VueNode } from './type.ts'
 import { isFragment } from '@v-c/util/dist/Children/isFragment'
-import { cloneVNode, isVNode } from 'vue'
+import { filterEmpty } from '@v-c/util/dist/props-util'
+import { cloneVNode, Fragment, h, isVNode } from 'vue'
 
 export {
   isFragment,
@@ -25,4 +26,19 @@ export function getVNode(node: VueNode) {
     return node?.()
   }
   return node
+}
+
+export function checkRenderNode(node: any) {
+  const child = Array.isArray(node) ? node : [node]
+  const pureChild = filterEmpty(child)
+  if (pureChild.length > 0) {
+    if (pureChild.length === 1) {
+      return pureChild[0]
+    }
+    else {
+      return h(Fragment, null, pureChild)
+    }
+  }
+
+  return undefined
 }

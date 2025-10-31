@@ -299,6 +299,7 @@ export function useBaseConfig<K extends string>(suffixCls?: K, props?: Component
   const config = useConfig()
   return {
     result: computed(() => config.value?.result),
+    timeline: computed(() => config.value?.timeline),
     getPrefixCls: (suffixCls?: string, prefixCls?: string) => config.value?.getPrefixCls(suffixCls, prefixCls),
     prefixCls: computed(() => {
       return config.value?.getPrefixCls(suffixCls, props?.prefixCls)

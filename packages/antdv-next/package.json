@@ -12,6 +12,7 @@
     "@antdv-next/cssinjs": "workspace:^",
     "@antdv-next/icons": "workspace:^",
     "@v-c/color-picker": "catalog:",
+    "@v-c/mutate-observer": "^0.0.2",
     "@v-c/resize-observer": "catalog:",
     "@v-c/util": "catalog:",
     "@vueuse/core": "catalog:",

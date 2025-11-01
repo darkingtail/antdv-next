@@ -198,6 +198,9 @@ importers:
       '@v-c/color-picker':
         specifier: 'catalog:'
         version: 1.0.0(vue@3.5.22(typescript@5.9.3))
+      '@v-c/mutate-observer':
+        specifier: ^0.0.2
+        version: 0.0.2(vue@3.5.22(typescript@5.9.3))
       '@v-c/resize-observer':
         specifier: 'catalog:'
         version: 0.0.2(vue@3.5.22(typescript@5.9.3))
@@ -1444,6 +1447,11 @@ packages:
 
   '@v-c/fast-color@1.0.0':
     resolution: {integrity: sha512-Xp54NiFH4rvnqY2iW+HJKPN13V3oafmJHnu3CAl6mKrr7rPW3l2mo+079d/ZLlmIGO+OHBefeNov42BUCoif5g==}
+    peerDependencies:
+      vue: ^3.0.0
+
+  '@v-c/mutate-observer@0.0.2':
+    resolution: {integrity: sha512-fPHCM80uQvG2Dayg4yDV9e/+7hkJzOktu9V1nJ/s0WWjI4WknyrIMJlhqEQ1RdhxTNg4dmjd/krW317w1i1cQg==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -4797,6 +4805,12 @@ snapshots:
 
   '@v-c/fast-color@1.0.0(vue@3.5.22(typescript@5.9.3))':
     dependencies:
+      vue: 3.5.22(typescript@5.9.3)
+
+  '@v-c/mutate-observer@0.0.2(vue@3.5.22(typescript@5.9.3))':
+    dependencies:
+      '@v-c/resize-observer': 0.0.2(vue@3.5.22(typescript@5.9.3))
+      '@v-c/util': 0.0.7(vue@3.5.22(typescript@5.9.3))
       vue: 3.5.22(typescript@5.9.3)
 
   '@v-c/resize-observer@0.0.2(vue@3.5.22(typescript@5.9.3))':

@@ -2,6 +2,8 @@ import type { CSSInterpolation, DerivativeFunc } from '@antdv-next/cssinjs'
 import type { VNodeChild } from 'vue'
 import type { AnyObject } from '../../_util/type'
 import type { AliasToken } from './alias'
+import type { MapToken } from './maps'
+import type { SeedToken } from './seeds'
 
 export type { ComponentTokenMap } from './components'
 export type {
@@ -47,3 +49,5 @@ export type {
   CSSInterpolation,
   DerivativeFunc,
 }
+
+export type MappingAlgorithm = DerivativeFunc<SeedToken, MapToken>

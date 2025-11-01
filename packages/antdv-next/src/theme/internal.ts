@@ -21,7 +21,7 @@ import genPresetColor from './util/genPresetColor'
 import { genComponentStyleHook, genStyleHooks, genSubStyleComponent } from './util/genStyleUtils'
 import useResetIconStyle from './util/useResetIconStyle'
 
-// export { defaultConfig, DesignTokenContext } from './context'
+export { defaultConfig } from './context'
 
 export type { CSSUtil, TokenWithCommonCls } from '@antdv-next/cssinjs/cssinjs-utils'
 export {

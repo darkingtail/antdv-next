@@ -8,7 +8,7 @@ import { filterEmpty } from '@v-c/util/dist/props-util'
 import { omit } from 'es-toolkit'
 import { toArray } from 'es-toolkit/compat'
 import { computed, defineComponent, nextTick, onBeforeUnmount, onMounted, shallowRef, watch } from 'vue'
-import { getSlotPropFn, getSlotPropsFnRun } from '../_util/tools.ts'
+import { getSlotPropsFnRun } from '../_util/tools.ts'
 import Wave from '../_util/wave'
 import { useComponentConfig, useConfig } from '../config-provider/context.ts'
 import { useDisabledContext } from '../config-provider/DisabledContext.tsx'
@@ -206,7 +206,7 @@ const InternalCompoundedButton = defineComponent<
       }
       const buttonText = buttonRef.value.textContent || ''
       const children = filterEmpty(slots?.default?.())
-      const iconChildren = filterEmpty(toArray(getSlotPropFn(slots, props, 'icon')?.()))
+      const iconChildren = toArray(getSlotPropsFnRun(slots, props, 'icon')?.())
       const needInserted = children.length === 1 && iconChildren.length === 0 && !isUnBorderedButtonVariant(mergedVariant.value)
       if (needInserted && isTwoCNChar(buttonText.trim())) {
         if (!hasTwoCNChar.value) {
@@ -240,7 +240,7 @@ const InternalCompoundedButton = defineComponent<
       const { loading } = props
       const sizeCls = sizeFullName.value ? (sizeClassNameMap?.[sizeFullName.value] ?? '') : ''
       const iconChildren = getSlotPropsFnRun(slots, props, 'icon')
-      const hasIcon = iconChildren && iconChildren.length > 0
+      const hasIcon = !!iconChildren
       const iconType = innerLoading.value ? 'loading' : hasIcon
       const children = filterEmpty(slots?.default?.())
       const needInserted = children.length === 1 && !hasIcon && !isUnBorderedButtonVariant(mergedVariant.value)
@@ -307,7 +307,7 @@ const InternalCompoundedButton = defineComponent<
               )
             : (
                 <DefaultLoadingIcon
-                  existIcon={!!hasIcon}
+                  existIcon={hasIcon}
                   prefixCls={prefixCls.value}
                   loading={innerLoading.value}
                   mount={isMountRef.value}

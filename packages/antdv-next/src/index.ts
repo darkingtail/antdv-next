@@ -3,7 +3,7 @@ import * as components from './components'
 
 export * from './components'
 let prefix = 'A'
-
+export { useBreakpoint } from './grid'
 export default {
   setPrefix(newPrefix: string) {
     prefix = newPrefix
@@ -19,4 +19,4 @@ export default {
   },
 } as Plugin
 
-export { useBreakpoint } from './grid'
+export { default as theme } from './theme'

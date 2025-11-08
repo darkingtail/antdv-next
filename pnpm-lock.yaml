@@ -55,8 +55,8 @@ catalogs:
       specifier: ^0.0.2
       version: 0.0.2
     '@v-c/util':
-      specifier: 0.0.10
-      version: 0.0.10
+      specifier: 0.0.12
+      version: 0.0.12
     '@vitejs/plugin-vue':
       specifier: ^6.0.1
       version: 6.0.1
@@ -232,8 +232,8 @@ importers:
         specifier: 'catalog:'
         version: 0.0.2(vue@3.5.24(typescript@5.9.3))
       '@v-c/segmented':
-        specifier: ^0.0.3
-        version: 0.0.3(vue@3.5.24(typescript@5.9.3))
+        specifier: ^0.0.5
+        version: 0.0.5(vue@3.5.24(typescript@5.9.3))
       '@v-c/tooltip':
         specifier: ^0.0.8
         version: 0.0.8(vue@3.5.24(typescript@5.9.3))
@@ -242,7 +242,7 @@ importers:
         version: 0.0.8(vue@3.5.24(typescript@5.9.3))
       '@v-c/util':
         specifier: 'catalog:'
-        version: 0.0.10(vue@3.5.24(typescript@5.9.3))
+        version: 0.0.12(vue@3.5.24(typescript@5.9.3))
       '@vueuse/core':
         specifier: 'catalog:'
         version: 13.9.0(vue@3.5.24(typescript@5.9.3))
@@ -266,7 +266,7 @@ importers:
         version: 0.7.5
       '@v-c/util':
         specifier: 'catalog:'
-        version: 0.0.10(vue@3.5.24(typescript@5.9.3))
+        version: 0.0.12(vue@3.5.24(typescript@5.9.3))
       csstype:
         specifier: 'catalog:'
         version: 3.1.3
@@ -306,7 +306,7 @@ importers:
         version: 4.4.2
       '@v-c/util':
         specifier: 'catalog:'
-        version: 0.0.10(vue@3.5.22(typescript@5.9.3))
+        version: 0.0.12(vue@3.5.22(typescript@5.9.3))
       es-toolkit:
         specifier: 'catalog:'
         version: 1.41.0
@@ -1542,8 +1542,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  '@v-c/segmented@0.0.3':
-    resolution: {integrity: sha512-ynKF5hYsaZWgfeVzmUp1a62Q0pDxKyYiJiyejU/3P8zDqqw9MjMq7qbpvqrW9RPI7vrnThu4He53pSf4Vcen+A==}
+  '@v-c/segmented@0.0.5':
+    resolution: {integrity: sha512-yPpG7yBDNf05bsCYYo7GBrAfS+dh/7s4jqQFr1/+7NruxV5u0X6mdp401efaqWxFIL+hmyqko1eck5gFrupKcg==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -1559,6 +1559,11 @@ packages:
 
   '@v-c/util@0.0.10':
     resolution: {integrity: sha512-26ZdR62uHDRC0TqhfgM4xGETnVxef3X5RSKyT0cUNA+chps2AbCkhlOySPuLQkck8Sn11I53cl4habPg7NKTnA==}
+    peerDependencies:
+      vue: ^3.0.0
+
+  '@v-c/util@0.0.12':
+    resolution: {integrity: sha512-PlKjR5IFY3/XHoPWqdN9KfatQGWG4MFK+Ch7uPCFxDIlmnhWbrDTDzJW3OL/68/aoOBw2E3UA13r64EVEz8SOA==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -5015,9 +5020,9 @@ snapshots:
       resize-observer-polyfill: 1.5.1
       vue: 3.5.24(typescript@5.9.3)
 
-  '@v-c/segmented@0.0.3(vue@3.5.24(typescript@5.9.3))':
+  '@v-c/segmented@0.0.5(vue@3.5.24(typescript@5.9.3))':
     dependencies:
-      '@v-c/util': 0.0.10(vue@3.5.24(typescript@5.9.3))
+      '@v-c/util': 0.0.12(vue@3.5.24(typescript@5.9.3))
       vue: 3.5.24(typescript@5.9.3)
 
   '@v-c/tooltip@0.0.8(vue@3.5.24(typescript@5.9.3))':
@@ -5033,11 +5038,15 @@ snapshots:
       '@v-c/util': 0.0.10(vue@3.5.24(typescript@5.9.3))
       vue: 3.5.24(typescript@5.9.3)
 
-  '@v-c/util@0.0.10(vue@3.5.22(typescript@5.9.3))':
+  '@v-c/util@0.0.10(vue@3.5.24(typescript@5.9.3))':
+    dependencies:
+      vue: 3.5.24(typescript@5.9.3)
+
+  '@v-c/util@0.0.12(vue@3.5.22(typescript@5.9.3))':
     dependencies:
       vue: 3.5.22(typescript@5.9.3)
 
-  '@v-c/util@0.0.10(vue@3.5.24(typescript@5.9.3))':
+  '@v-c/util@0.0.12(vue@3.5.24(typescript@5.9.3))':
     dependencies:
       vue: 3.5.24(typescript@5.9.3)
 

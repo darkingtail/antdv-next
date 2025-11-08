@@ -17,11 +17,11 @@ const mergedArrow = computed<TooltipProps['arrow']>(() => {
 
 <template>
   <a-config-provider :button="{ style: { width: `${buttonWidth}px`, margin: '4px' } }">
-    <!-- <a-segmented
+    <a-segmented
       v-model:value="arrow"
       :options="['Show', 'Hide', 'Center']"
       style="margin-bottom: 24px"
-    /> -->
+    />
     <a-flex vertical justify="center" align="center" class="demo">
       <a-flex justify="center" align="center" style="white-space: nowrap">
         <a-tooltip placement="topLeft" title="prompt text" :arrow="mergedArrow">

@@ -115,7 +115,7 @@ export interface TooltipSlots {
  * Internal props type with hidden properties
  */
 interface InternalTooltipProps extends TooltipProps {
-  'data-popover-inject'?: boolean
+  dataPopoverInject?: boolean
 }
 
 const defaults = {
@@ -206,7 +206,7 @@ const InternalTooltip = defineComponent<
     >(useToArr(contextClassNames, classes), useToArr(contextStyles, styles), useToProps(mergedProps))
     const rootPrefixCls = computed(() => getPrefixCls())
 
-    const injectFromPopover = props['data-popover-inject']
+    const injectFromPopover = props.dataPopoverInject
 
     // Style
     const rootCls = useCSSVarCls(prefixCls)

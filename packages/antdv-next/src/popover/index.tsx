@@ -178,7 +178,7 @@ const InternalPopover = defineComponent<
               typeof motion?.name === 'string' ? motion?.name : undefined,
             ),
           }}
-          data-popover-inject
+          dataPopoverInject={true}
           ref={popoverRef}
         >
           {createVNode(children, { onKeydown: onKeyDown })}

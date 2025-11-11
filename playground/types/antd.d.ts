@@ -47,5 +47,6 @@ declare module 'vue' {
     AFloatBackTop: typeof import('antdv-next')['BackTop']
     AFloatButtonGroup: typeof import('antdv-next')['FloatButtonGroup']
     AMenu: typeof import('antdv-next')['Menu']
+    ADropdown: typeof import('antdv-next')['Dropdown']
   }
 }

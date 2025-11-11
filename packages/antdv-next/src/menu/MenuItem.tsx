@@ -59,7 +59,7 @@ const MenuItem = defineComponent<
         const wrapNode = (
           <span
             class={clsx(
-              `${prefixCls}-item-content`,
+              `${prefixCls}-title-content`,
               firstLevel ? classes.itemContent : classes.subMenu.itemContent,
               {
                 [`${prefixCls}-title-content-with-extra`]: !!extra || extra === 0,

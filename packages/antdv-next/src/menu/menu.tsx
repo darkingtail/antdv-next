@@ -72,6 +72,16 @@ export type MenuStylesType
   = | MenuStylesSchemaType
     | ((info: { props: MenuProps }) => MenuStylesSchemaType)
 
+export interface RenderItem {
+  key: string | number
+  label?: any
+  disabled?: boolean
+  danger?: boolean
+  type?: 'item' | 'submenu' | 'group' | 'divider'
+  theme?: 'dark' | 'light'
+  title?: string
+}
+
 export interface MenuProps extends Omit<
   VcMenuProps,
   'items'
@@ -103,8 +113,8 @@ export interface MenuProps extends Omit<
   classes?: MenuClassNamesType
   styles?: MenuStylesType
   rootClass?: string
-  labelRender?: (item: ItemType) => any
-  extraRender?: (item: ItemType) => any
+  labelRender?: (item: RenderItem) => any
+  extraRender?: (item: RenderItem) => any
   itemIcon?: (props: MenuItemProps & RenderIconInfo) => any
 }
 
@@ -126,9 +136,9 @@ export interface MenuEmits {
 export interface MenuSlots {
   default: () => any
   expandIcon: () => any
-  labelRender?: (item: ItemType) => any
-  extraRender?: (item: ItemType) => any
-  itemIcon?: (props: MenuItemProps & RenderIconInfo) => any
+  labelRender: (item: RenderItem) => any
+  extraRender: (item: RenderItem) => any
+  itemIcon: (props: MenuItemProps & RenderIconInfo) => any
 }
 
 const defaults = {
@@ -150,7 +160,6 @@ const InternalMenu = defineComponent<
     })
     const { classes, styles } = toPropsRefs(props, 'classes', 'styles')
     const {
-      prefixCls,
       getPrefixCls,
       direction,
       getPopupContainer,
@@ -160,6 +169,7 @@ const InternalMenu = defineComponent<
       styles: contextStyles,
       expandIcon: contextExpandIcon,
     } = useComponentBaseConfig('menu', props, ['expandIcon'])
+    const prefixCls = computed(() => getPrefixCls('menu', props?.prefixCls || overrideObj.value?.prefixCls))
     const rootPrefixCls = computed(() => getPrefixCls())
 
     // ======================== Warning ==========================

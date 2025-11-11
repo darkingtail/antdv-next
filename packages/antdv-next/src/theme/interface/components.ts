@@ -19,7 +19,7 @@ import type { ComponentToken as CollapseComponentToken } from '../../collapse/st
 import type { ComponentToken as DescriptionsComponentToken } from '../../descriptions/style'
 import type { ComponentToken as DividerComponentToken } from '../../divider/style'
 // import type { ComponentToken as DrawerComponentToken } from '../../drawer/style';
-// import type { ComponentToken as DropdownComponentToken } from '../../dropdown/style';
+import type { ComponentToken as DropdownComponentToken } from '../../dropdown/style'
 import type { ComponentToken as EmptyComponentToken } from '../../empty/style'
 import type { ComponentToken as FlexComponentToken } from '../../flex/style'
 import type { ComponentToken as FloatButtonComponentToken } from '../../float-button/style'
@@ -84,7 +84,7 @@ export interface ComponentTokenMap {
   Descriptions?: DescriptionsComponentToken
   Divider?: DividerComponentToken
   // Drawer?: DrawerComponentToken;
-  // Dropdown?: DropdownComponentToken;
+  Dropdown?: DropdownComponentToken
   Empty?: EmptyComponentToken
   Flex?: FlexComponentToken
   FloatButton?: FloatButtonComponentToken

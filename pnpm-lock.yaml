@@ -220,9 +220,12 @@ importers:
       '@v-c/color-picker':
         specifier: 'catalog:'
         version: 1.0.0(vue@3.5.24(typescript@5.9.3))
+      '@v-c/dropdown':
+        specifier: ^0.0.1
+        version: 0.0.1(vue@3.5.24(typescript@5.9.3))
       '@v-c/menu':
-        specifier: link:/Users/yanyu/workspace/github/antdv-next/vue-components/packages/menu
-        version: link:../../../../../github/antdv-next/vue-components/packages/menu
+        specifier: ^0.0.5
+        version: 0.0.5(vue@3.5.24(typescript@5.9.3))
       '@v-c/mutate-observer':
         specifier: 'catalog:'
         version: 0.0.2(vue@3.5.24(typescript@5.9.3))
@@ -1518,13 +1521,28 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
+  '@v-c/dropdown@0.0.1':
+    resolution: {integrity: sha512-zRG9SBPhjH3M9tIKGg+C/jssXU+Sl4uwxN8cqB1PSdYZP03RA8lUGgMk7iL3qG/bx622mZVoW+eQpkVL0bnMIg==}
+    peerDependencies:
+      vue: ^3.0.0
+
   '@v-c/fast-color@1.0.0':
     resolution: {integrity: sha512-Xp54NiFH4rvnqY2iW+HJKPN13V3oafmJHnu3CAl6mKrr7rPW3l2mo+079d/ZLlmIGO+OHBefeNov42BUCoif5g==}
     peerDependencies:
       vue: ^3.0.0
 
+  '@v-c/menu@0.0.5':
+    resolution: {integrity: sha512-muIgw7AA9ZkLWZAsZBX+kzX+fn7Oc6UE0YVScWURwN2BGXwmBPMhGY7fxxRMez2hXGyTmtAog72yddgJKPvYBg==}
+    peerDependencies:
+      vue: ^3.0.0
+
   '@v-c/mutate-observer@0.0.2':
     resolution: {integrity: sha512-fPHCM80uQvG2Dayg4yDV9e/+7hkJzOktu9V1nJ/s0WWjI4WknyrIMJlhqEQ1RdhxTNg4dmjd/krW317w1i1cQg==}
+    peerDependencies:
+      vue: ^3.0.0
+
+  '@v-c/overflow@0.0.1':
+    resolution: {integrity: sha512-JXCfachQMQvWKyqlVW4aTuIfMigMXnMa88hK89d4fgBKJ0raYetPqI1h18SrYkVz1r7vaL9VrHu1vFhg9IlBeQ==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -4979,13 +4997,32 @@ snapshots:
       classnames: 2.5.1
       vue: 3.5.24(typescript@5.9.3)
 
+  '@v-c/dropdown@0.0.1(vue@3.5.24(typescript@5.9.3))':
+    dependencies:
+      '@v-c/trigger': 0.0.13(vue@3.5.24(typescript@5.9.3))
+      '@v-c/util': 0.0.13(vue@3.5.24(typescript@5.9.3))
+      vue: 3.5.24(typescript@5.9.3)
+
   '@v-c/fast-color@1.0.0(vue@3.5.24(typescript@5.9.3))':
     dependencies:
+      vue: 3.5.24(typescript@5.9.3)
+
+  '@v-c/menu@0.0.5(vue@3.5.24(typescript@5.9.3))':
+    dependencies:
+      '@v-c/overflow': 0.0.1(vue@3.5.24(typescript@5.9.3))
+      '@v-c/trigger': 0.0.13(vue@3.5.24(typescript@5.9.3))
+      '@v-c/util': 0.0.13(vue@3.5.24(typescript@5.9.3))
       vue: 3.5.24(typescript@5.9.3)
 
   '@v-c/mutate-observer@0.0.2(vue@3.5.24(typescript@5.9.3))':
     dependencies:
       '@v-c/resize-observer': 0.0.2(vue@3.5.24(typescript@5.9.3))
+      '@v-c/util': 0.0.13(vue@3.5.24(typescript@5.9.3))
+      vue: 3.5.24(typescript@5.9.3)
+
+  '@v-c/overflow@0.0.1(vue@3.5.24(typescript@5.9.3))':
+    dependencies:
+      '@v-c/resize-observer': 0.0.3(vue@3.5.24(typescript@5.9.3))
       '@v-c/util': 0.0.13(vue@3.5.24(typescript@5.9.3))
       vue: 3.5.24(typescript@5.9.3)
 

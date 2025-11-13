@@ -242,8 +242,8 @@ importers:
         specifier: ^0.0.16
         version: 0.0.16(vue@3.5.24(typescript@5.9.3))
       '@v-c/tour':
-        specifier: ^0.0.3
-        version: 0.0.3(vue@3.5.24(typescript@5.9.3))
+        specifier: ^0.0.4
+        version: 0.0.4(vue@3.5.24(typescript@5.9.3))
       '@v-c/trigger':
         specifier: ^0.0.16
         version: 0.0.16(vue@3.5.24(typescript@5.9.3))
@@ -1584,8 +1584,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  '@v-c/tour@0.0.3':
-    resolution: {integrity: sha512-Da3RBsUw8xs9eJYEuhTbh0B17HRr8YPpVaentwrAxURULT8uHU9hjsQFZK5C+jQGaDafD4IhFlUvlnd7sKuppA==}
+  '@v-c/tour@0.0.4':
+    resolution: {integrity: sha512-kPE/Gn8x6Rfa5jDbZTbh7mFm/9Qs6pYdFGpf7TJC1mTvzoEyVivO5tZiSMNuTfPWqLzr3N4l9UgbNogCda535A==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -5079,7 +5079,7 @@ snapshots:
       '@v-c/util': 0.0.15(vue@3.5.24(typescript@5.9.3))
       vue: 3.5.24(typescript@5.9.3)
 
-  '@v-c/tour@0.0.3(vue@3.5.24(typescript@5.9.3))':
+  '@v-c/tour@0.0.4(vue@3.5.24(typescript@5.9.3))':
     dependencies:
       '@v-c/portal': 0.0.6(vue@3.5.24(typescript@5.9.3))
       '@v-c/trigger': 0.0.16(vue@3.5.24(typescript@5.9.3))

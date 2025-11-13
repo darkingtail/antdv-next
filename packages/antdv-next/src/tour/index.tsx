@@ -10,6 +10,7 @@ import { pureAttrs, useMergeSemantic, useToArr, useToProps } from '../_util/hook
 import { useZIndex } from '../_util/hooks/useZIndex'
 import getPlacements from '../_util/placements'
 import { toPropsRefs } from '../_util/tools'
+import { checkRenderNode } from '../_util/vueNode.ts'
 import { ZIndexProvider } from '../_util/zindexContext'
 import { useComponentBaseConfig } from '../config-provider/context'
 import { useToken } from '../theme/internal'
@@ -38,14 +39,15 @@ const Tour = defineComponent<
     const [,token] = useToken()
     const mergedSteps = computed(() => {
       return props?.steps?.map((step, index) => {
-        const _cover = filterEmpty(slots?.coverRender?.({ step, index }))
-        const _title = filterEmpty(slots?.titleRender?.({ step, index }))
-        const _description = filterEmpty(slots?.descriptionRender?.({ step, index }))
+        const _cover = filterEmpty(slots?.coverRender?.({ step, index })).filter(Boolean)
+        const _title = filterEmpty(slots?.titleRender?.({ step, index })).filter(Boolean)
+        const _description = filterEmpty(slots?.descriptionRender?.({ step, index })).filter(Boolean)
+
         return {
           ...step,
-          cover: step?.cover ?? (_cover.length > 0 ? _cover : undefined),
-          title: step?.title ?? (_title.length > 0 ? _title : undefined),
-          description: step?.description ?? (_description.length > 0 ? _description : undefined),
+          cover: step?.cover ?? checkRenderNode(_cover),
+          title: step?.title ?? checkRenderNode(_title),
+          description: step?.description ?? checkRenderNode(_description),
           class: clsx(
             step.class,
             {

@@ -20,7 +20,7 @@
     "@v-c/resize-observer": "catalog:",
     "@v-c/segmented": "^0.0.8",
     "@v-c/tooltip": "^0.0.16",
-    "@v-c/tour": "^0.0.3",
+    "@v-c/tour": "^0.0.4",
     "@v-c/trigger": "^0.0.16",
     "@v-c/util": "catalog:",
     "@vueuse/core": "catalog:",

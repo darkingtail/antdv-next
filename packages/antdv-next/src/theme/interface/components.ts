@@ -32,7 +32,7 @@ import type { ComponentToken as LayoutComponentToken } from '../../layout/style'
 // import type { ComponentToken as ListComponentToken } from '../../list/style';
 // import type { ComponentToken as MentionsComponentToken } from '../../mentions/style';
 import type { ComponentToken as MenuComponentToken } from '../../menu/style'
-// import type { ComponentToken as MessageComponentToken } from '../../message/style';
+import type { ComponentToken as MessageComponentToken } from '../../message/style'
 // import type { ComponentToken as ModalComponentToken } from '../../modal/style';
 import type { ComponentToken as NotificationComponentToken } from '../../notification/style'
 // import type { ComponentToken as PaginationComponentToken } from '../../pagination/style';
@@ -122,7 +122,7 @@ export interface ComponentTokenMap {
   // Steps?: StepsComponentToken;
   Menu?: MenuComponentToken
   // Modal?: ModalComponentToken;
-  // Message?: MessageComponentToken;
+  Message?: MessageComponentToken
   // Upload?: UploadComponentToken;
   Tooltip?: TooltipComponentToken
   // Table?: TableComponentToken;

@@ -7,12 +7,12 @@ import type { InternalNamePath, Meta, Rule, RuleError, RuleObject, ValidateOptio
 import type { ItemHolderProps } from './ItemHolder.tsx'
 import { clsx } from '@v-c/util'
 import { filterEmpty } from '@v-c/util/dist/props-util'
-import { computed, defineComponent, onBeforeUnmount, shallowRef, watch } from 'vue'
+import { computed, createVNode, defineComponent, isVNode, onBeforeUnmount, shallowRef, watch } from 'vue'
 import { useComponentBaseConfig } from '../../config-provider/context'
 import useCSSVarCls from '../../config-provider/hooks/useCSSVarCls'
 import { useFormContext, useNoStyleItemContext } from '../context.tsx'
 import useStyle from '../style'
-import { getFieldId, toArray } from '../util.ts'
+import { getFieldId, initialValueFormat, toArray } from '../util.ts'
 import { validateRules } from '../utils/validateUtil.ts'
 import { getNamePath, getValue, setValue } from '../utils/valueUtil.ts'
 import ItemHolder from './ItemHolder.tsx'
@@ -110,8 +110,8 @@ const InternalFormItem = defineComponent<
     const warnings = shallowRef<any[]>([])
     const validateDisabled = shallowRef(false)
     const subFieldErrors = shallowRef<Record<string, FieldError>>({})
-
-    const initialValue = shallowRef<any>(formContext.value?.getFieldValue?.(namePath.value))
+    // 获取初始值的类型，如果是单个的值，直接复制，如果是个对象，就需要进行深拷贝
+    const initialValue = shallowRef<any>(initialValueFormat(formContext.value?.getFieldValue?.(namePath.value)))
 
     const mergedRules = computed<RuleObject[]>(() => {
       const collectedRules: (Rule | RuleObject)[] = []
@@ -282,13 +282,18 @@ const InternalFormItem = defineComponent<
         validated: false,
       })
       if (hasName.value && formContext.value?.model) {
-        setValue(formContext.value.model, namePath.value, initialValue.value)
+        // 避免对原始值造成影响
+        setValue(formContext.value.model, namePath.value, initialValueFormat(initialValue.value))
       }
     }
 
     const onFieldBlur = () => {
       updateMeta({ touched: true })
       triggerValidate('blur')
+    }
+
+    const onFieldChange = () => {
+      triggerValidate('change')
     }
 
     watch(
@@ -384,7 +389,17 @@ const InternalFormItem = defineComponent<
     // }
 
     return () => {
-      const children = filterEmpty(slots.default?.() ?? [])
+      let children: any = filterEmpty(slots.default?.() ?? [])
+      if (children.length > 0 && children.length === 1) {
+        children = children[0]
+        if (isVNode(children)) {
+          // 自动注入onBlur和change
+          children = createVNode(children, {
+            onBlur: onFieldBlur,
+            onChange: onFieldChange,
+          })
+        }
+      }
       return renderLayout(
         children,
         fieldId.value,

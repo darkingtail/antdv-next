@@ -5,6 +5,7 @@ import type { TooltipPlacement, TriggerCommonApi } from '../tooltip'
 import VcSlider from '@v-c/slider'
 import { clsx } from '@v-c/util'
 import raf from '@v-c/util/dist/raf'
+import { omit } from 'es-toolkit'
 import { cloneVNode, computed, defineComponent, onMounted, onUnmounted, shallowRef } from 'vue'
 import {
   getAttrStyleAndClass,
@@ -248,6 +249,18 @@ const Slider = defineComponent<
       )
 
       const restProps: Record<string, any> = {
+        ...omit(props, [
+          'prefixCls',
+          'range',
+          'rootClass',
+          'style',
+          'disabled',
+          'tooltip', // Deprecated
+          'classes',
+          'styles',
+          'vertical',
+          'orientation',
+        ]),
         ...restAttrs,
       }
       if (isRTL.value && !mergedVertical.value) {
@@ -255,7 +268,6 @@ const Slider = defineComponent<
       }
       const mergedTipFormatter = getTipFormatter(tipFormatter)
       const useActiveTooltipHandle = range && !lockOpen.value
-
       const handleRender: VcSliderProps['handleRender'] = contextHandleRender || (({ node, index, value }) => {
         const nodeProps: Record<string, any> = {}
         function proxyEvent(
@@ -369,9 +381,6 @@ const Slider = defineComponent<
           onChange={(...args) => {
             emit('change', ...args)
             emit('update:value', ...args)
-          }}
-          onAfterChange={(...args) => {
-            emit('afterChange', ...args)
           }}
           ref={sliderRef}
         />

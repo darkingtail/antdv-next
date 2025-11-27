@@ -21,15 +21,15 @@ import { toPropsRefs } from '../../_util/tools'
 import { useComponentBaseConfig } from '../../config-provider/context'
 import useLocale from '../../locale/useLocale'
 import Tooltip from '../../tooltip'
-import CopyBtn from '../Base/CopyBtn'
-import Ellipsis from '../Base/Ellipsis'
-import EllipsisTooltip from '../Base/EllipsisTooltip'
 import Editable from '../Editable'
 import useCopyClick from '../hooks/useCopyClick'
 import useMergedConfig from '../hooks/useMergedConfig'
 import usePrevious from '../hooks/usePrevious'
 import useTooltipProps from '../hooks/useTooltipProps'
 import Typography from '../Typography'
+import CopyBtn from './CopyBtn'
+import Ellipsis from './Ellipsis'
+import EllipsisTooltip from './EllipsisTooltip'
 import { isEleEllipsis, isValidText, toList } from './util'
 
 const ELLIPSIS_STR = '...'
@@ -333,34 +333,10 @@ export default defineComponent<
       return [editConfig.value.text, getChildrenText.value, props.title, tooltipProps.value?.title].find(isValidText)
     })
 
-    // =========================== Render ===========================
-    if (editing.value) {
-      const { className: attrClass, style: attrStyle } = getAttrStyleAndClass(attrs)
-      return () => (
-        <Editable
-          value={editConfig.value.text ?? (getChildrenText.value != null ? String(getChildrenText.value) : '')}
-          onSave={onEditChange}
-          onCancel={onEditCancel}
-          onEnd={() => {
-            editConfig.value.onEnd?.()
-            emit('edit:end')
-          }}
-          prefixCls={prefixCls.value}
-          className={classNames(attrClass, mergedClassNames.value.root, props.rootClass, contextClassName.value)}
-          style={[mergedStyles.value.root, contextStyle.value, attrStyle] as any}
-          direction={mergedDirection.value}
-          component={props.component as any}
-          maxLength={editConfig.value.maxLength}
-          autoSize={editConfig.value.autoSize}
-          enterIcon={editConfig.value.enterIcon}
-        />
-      )
-    }
-
-    const { className: attrClass, style: attrStyle, restAttrs } = getAttrStyleAndClass(attrs)
     // Expand
     const renderExpand = () => {
       const { expandable, symbol } = ellipsisConfig.value
+      console.log(expandable, symbol)
       if (props.disabled)
         return null
       return expandable
@@ -469,72 +445,98 @@ export default defineComponent<
       ? onEditClick
       : (e: MouseEvent) => emit('click', e)
 
-    return () => (
-      <ResizeObserver onResize={onResize} disabled={!mergedEnableEllipsis.value}>
-        <EllipsisTooltip
-          tooltipProps={tooltipProps.value}
-          enableEllipsis={mergedEnableEllipsis.value}
-          isEllipsis={isMergedEllipsis.value}
-        >
-          <Typography
-            class={componentClassName.value}
+    return () => {
+      const { className: attrClass, style: attrStyle } = getAttrStyleAndClass(attrs)
+
+      // =========================== Render ===========================
+      if (editing.value) {
+        return () => (
+          <Editable
+            value={editConfig.value.text ?? (getChildrenText.value != null ? String(getChildrenText.value) : '')}
+            onSave={onEditChange}
+            onCancel={onEditCancel}
+            onEnd={() => {
+              editConfig.value.onEnd?.()
+              emit('edit:end')
+            }}
             prefixCls={prefixCls.value}
-            style={componentStyle.value as any}
-            component={props.component as any}
-            ref={typographyRef}
+            className={classNames(attrClass, mergedClassNames.value.root, props.rootClass, contextClassName.value)}
+            style={[mergedStyles.value.root, contextStyle.value, attrStyle] as any}
             direction={mergedDirection.value}
-            {
-              ...{
-                onClick: clickHandler,
-                title: props.title,
-              }
-            }
-            aria-label={topAriaLabel.value as any}
-            rootClass={props.rootClass}
-            {...pureAttrs(restAttrs)}
+            component={props.component as any}
+            maxLength={editConfig.value.maxLength}
+            autoSize={editConfig.value.autoSize}
+            enterIcon={editConfig.value.enterIcon}
+          />
+        )
+      }
+      return (
+        <ResizeObserver onResize={onResize} disabled={!mergedEnableEllipsis.value}>
+          <EllipsisTooltip
+            tooltipProps={tooltipProps.value}
+            enableEllipsis={mergedEnableEllipsis.value}
+            isEllipsis={isMergedEllipsis.value}
           >
-            <Ellipsis
-              enableMeasure={mergedEnableEllipsis.value && !cssEllipsis.value}
-              text={childrenNodes.value}
-              rows={rows.value}
-              width={ellipsisWidth.value}
+            <Typography
+              class={componentClassName.value}
+              prefixCls={prefixCls.value}
+              style={componentStyle.value as any}
+              component={props.component as any}
+              ref={typographyRef}
+              direction={mergedDirection.value}
               {
                 ...{
-                  onEllipsis: onJsEllipsis,
-                } as any
+                  onClick: clickHandler,
+                  title: props.title,
+                }
               }
-              expanded={expanded.value}
-              miscDeps={[
-                copied.value,
-                expanded.value,
-                copyLoading.value,
-                enableEdit.value,
-                enableCopy.value,
-                textLocale?.value,
-                ellipsisConfig.value.suffix,
-                ellipsisConfig.value.symbol,
-                ...DECORATION_PROPS.map(key => (props as any)[key]),
-              ]}
+              aria-label={topAriaLabel.value as any}
+              rootClass={props.rootClass}
+              {...pureAttrs(restAttrs)}
             >
-              {(node: any, canEllipsis: any) => {
-                return wrapperDecorations(
-                  props,
-                  <>
-                    {node.length > 0 && canEllipsis && !expanded.value && topAriaLabel.value
-                      ? (
-                          <span key="show-content" aria-hidden>
-                            {node}
-                          </span>
-                        )
-                      : node}
-                    {renderEllipsis(canEllipsis)}
-                  </>,
-                )
-              }}
-            </Ellipsis>
-          </Typography>
-        </EllipsisTooltip>
-      </ResizeObserver>
-    )
+              <Ellipsis
+                enableMeasure={mergedEnableEllipsis.value && !cssEllipsis.value}
+                text={childrenNodes.value}
+                rows={rows.value}
+                width={ellipsisWidth.value}
+                {
+                  ...{
+                    onEllipsis: onJsEllipsis,
+                  } as any
+                }
+                expanded={expanded.value}
+                miscDeps={[
+                  copied.value,
+                  expanded.value,
+                  copyLoading.value,
+                  enableEdit.value,
+                  enableCopy.value,
+                  textLocale?.value,
+                  ellipsisConfig.value.suffix,
+                  ellipsisConfig.value.symbol,
+                  ...DECORATION_PROPS.map(key => (props as any)[key]),
+                ]}
+              >
+                {(node: any, canEllipsis: any) => {
+                  return wrapperDecorations(
+                    props,
+                    <>
+                      {node.length > 0 && canEllipsis && !expanded.value && topAriaLabel.value
+                        ? (
+                            <span key="show-content" aria-hidden>
+                              {node}
+                            </span>
+                          )
+                        : node}
+                      {renderEllipsis(canEllipsis)}
+                    </>,
+                  )
+                }}
+              </Ellipsis>
+            </Typography>
+          </EllipsisTooltip>
+        </ResizeObserver>
+      )
+    }
   },
 })

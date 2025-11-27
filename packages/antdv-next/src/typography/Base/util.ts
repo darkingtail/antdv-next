@@ -1,4 +1,5 @@
 import type { VueNode } from '../../_util/type'
+import { getSlotPropsFnRun } from '../../_util/tools.ts'
 import { isDev } from '../../_util/warning.ts'
 
 export function toList<T>(val: T | T[]): T[] {
@@ -9,6 +10,8 @@ export function toList<T>(val: T | T[]): T[] {
 }
 
 export function getNode(dom: VueNode, defaultNode: VueNode, needDom?: boolean) {
+  dom = getSlotPropsFnRun({}, { dom }, 'dom')
+  defaultNode = getSlotPropsFnRun({}, { defaultNode }, 'defaultNode')
   if (dom === true || dom === undefined) {
     return defaultNode
   }

@@ -1,8 +1,9 @@
 import type { CSSProperties, SlotsType } from 'vue'
-import type { EmptyEmit } from '../../_util/type'
+import type { EmptyEmit, VueNode } from '../../_util/type'
 import { filterEmpty } from '@v-c/util/dist/props-util'
-import { defineComponent, Fragment, nextTick, shallowRef, watch, watchEffect } from 'vue'
+import { computed, defineComponent, nextTick, shallowRef, watch, watchEffect } from 'vue'
 import toList from '../../_util/toList'
+import { getSlotPropsFnRun } from '../../_util/tools.ts'
 import { isValidText } from './util'
 
 interface MeasureTextProps {
@@ -22,7 +23,6 @@ const MeasureText = defineComponent<
 >({
   name: 'TypographyMeasureText',
   inheritAttrs: false,
-  expose: ['isExceed', 'getHeight'],
   setup(props, { slots, expose }) {
     const spanRef = shallowRef<HTMLSpanElement>()
 
@@ -87,11 +87,15 @@ function sliceNodes(nodeList: any[], len: number) {
 
 export interface EllipsisProps {
   enableMeasure?: boolean
-  text?: any
+  text?: VueNode
   width: number
   rows: number
   onEllipsis: (isEllipsis: boolean) => void
   expanded: boolean
+  /**
+   * Mark for misc update. Which will not affect ellipsis content length.
+   * e.g. tooltip content update.
+   */
   miscDeps: any[]
 }
 
@@ -117,14 +121,9 @@ const Ellipsis = defineComponent<
   }>
 >(
   (props, { slots }) => {
-    const nodeList = shallowRef<any[]>([])
-    watchEffect(() => {
-      nodeList.value = filterEmpty(toList(props.text as any, true))
-    })
-    const nodeLen = shallowRef(0)
-    watchEffect(() => {
-      nodeLen.value = getNodesLen(nodeList.value)
-    })
+    const nodeList = computed(() => filterEmpty(toList(getSlotPropsFnRun({}, props, 'text'), true)))
+
+    const nodeLen = computed(() => getNodesLen(nodeList.value))
 
     const ellipsisCutIndex = shallowRef<[number, number] | null>(null)
     const cutMidRef = shallowRef<MeasureTextExpose>()
@@ -140,7 +139,7 @@ const Ellipsis = defineComponent<
     const parentWhiteSpace = shallowRef<CSSProperties['whiteSpace'] | null>(null)
 
     watch(
-      () => [props.enableMeasure, props.width, nodeLen.value, props.rows],
+      [() => props.enableMeasure, () => props.width, nodeLen, () => props.rows],
       ([enableMeasure, width, len, rows]) => {
         if (enableMeasure && width && len && rows) {
           needEllipsis.value = STATUS_MEASURE_PREPARE
@@ -155,18 +154,16 @@ const Ellipsis = defineComponent<
     watch(
       needEllipsis,
       async (status) => {
+        await nextTick()
         if (status === STATUS_MEASURE_PREPARE) {
           needEllipsis.value = STATUS_MEASURE_START
-          await nextTick()
           const nextWhiteSpace = measureWhiteSpaceRef.value
             ? getComputedStyle(measureWhiteSpaceRef.value).whiteSpace
             : null
           parentWhiteSpace.value = nextWhiteSpace
         }
         else if (status === STATUS_MEASURE_START) {
-          await nextTick()
           const isOverflow = !!needEllipsisRef.value?.isExceed()
-
           needEllipsis.value = isOverflow ? STATUS_MEASURE_NEED_ELLIPSIS : STATUS_MEASURE_NO_NEED_ELLIPSIS
           ellipsisCutIndex.value = isOverflow ? [0, nodeLen.value] : null
           canEllipsis.value = isOverflow
@@ -187,6 +184,7 @@ const Ellipsis = defineComponent<
       { flush: 'post', immediate: true },
     )
 
+    // ========================= Cut Measure ==========================
     const cutMidIndex = shallowRef(0)
     watchEffect(() => {
       const range = ellipsisCutIndex.value
@@ -196,35 +194,27 @@ const Ellipsis = defineComponent<
     })
 
     watch(
-      () => ellipsisCutIndex.value,
-      async (range, prevRange) => {
-        if (!range || range[0] === range[1])
-          return
+      ellipsisCutIndex,
+      async () => {
         await nextTick()
-        const midHeight = cutMidRef.value?.getHeight?.() || 0
-
-        const isOverflow = midHeight > ellipsisHeight.value
-        let targetMidIndex = cutMidIndex.value
-        if (range[1] - range[0] === 1) {
-          targetMidIndex = isOverflow ? range[0] : range[1]
-        }
-        const nextRange: [number, number] = isOverflow
-          ? [range[0], targetMidIndex]
-          : [targetMidIndex, range[1]]
-
-        if (!prevRange || nextRange[0] !== prevRange[0] || nextRange[1] !== prevRange[1]) {
-          ellipsisCutIndex.value = nextRange
+        const [minIndex, maxIndex] = ellipsisCutIndex.value || [0, 0]
+        if (minIndex !== maxIndex) {
+          const midHeight = cutMidRef.value?.getHeight() || 0
+          const isOverflow = midHeight > ellipsisHeight.value
+          let targetMidIndex = cutMidIndex.value
+          if (maxIndex - minIndex === 1) {
+            targetMidIndex = isOverflow ? minIndex : maxIndex
+          }
+          ellipsisCutIndex.value = isOverflow ? [minIndex, targetMidIndex] : [targetMidIndex, maxIndex]
         }
       },
-      { flush: 'post' },
+      { flush: 'post', immediate: true },
     )
 
     return () => {
       const fullContent = slots?.default?.(nodeList.value, false)
+      // ========================= Text Content =========================
       const finalContentFn = () => {
-        // Ensure deps reactive
-        props.miscDeps?.forEach(() => {})
-
         if (!props.enableMeasure) {
           return slots?.default?.(nodeList.value, false)
         }
@@ -235,6 +225,8 @@ const Ellipsis = defineComponent<
           || ellipsisCutIndex.value[0] !== ellipsisCutIndex.value[1]
         ) {
           const content = slots?.default?.(nodeList.value, false)
+          // Limit the max line count to avoid scrollbar blink unless no need ellipsis
+          // https://github.com/ant-design/ant-design/issues/42958
           if ([STATUS_MEASURE_NO_NEED_ELLIPSIS, STATUS_MEASURE_NONE].includes(needEllipsis.value)) {
             return content
           }
@@ -256,6 +248,8 @@ const Ellipsis = defineComponent<
         )
       }
       const finalContent = finalContentFn()
+
+      // ============================ Render ============================
       const measureStyle = {
         width: `${props.width}px`,
         margin: 0,
@@ -264,10 +258,13 @@ const Ellipsis = defineComponent<
       }
       return (
         <>
+          {/* Final show content */}
           {finalContent}
 
+          {/* Measure if current content is exceed the rows */}
           {needEllipsis.value === STATUS_MEASURE_START && (
             <>
+              {/** With `rows` */}
               <MeasureText
                 style={{
                   ...measureStyle,
@@ -279,6 +276,7 @@ const Ellipsis = defineComponent<
                 {fullContent}
               </MeasureText>
 
+              {/** With `rows - 1` */}
               <MeasureText
                 style={{
                   ...measureStyle,
@@ -290,6 +288,7 @@ const Ellipsis = defineComponent<
                 {fullContent}
               </MeasureText>
 
+              {/** With `rows - 1` */}
               <MeasureText
                 style={{
                   ...measureStyle,
@@ -303,6 +302,7 @@ const Ellipsis = defineComponent<
             </>
           )}
 
+          {/* Real size overflow measure */}
           {needEllipsis.value === STATUS_MEASURE_NEED_ELLIPSIS
             && ellipsisCutIndex.value
             && ellipsisCutIndex.value[0] !== ellipsisCutIndex.value[1]
@@ -310,7 +310,7 @@ const Ellipsis = defineComponent<
               <MeasureText
                 style={{
                   ...measureStyle,
-                  top: 400,
+                  top: `${400}px`,
                 }}
                 ref={cutMidRef as any}
               >
@@ -318,10 +318,9 @@ const Ellipsis = defineComponent<
               </MeasureText>
             )}
 
+          {/* Measure white-space */}
           {needEllipsis.value === STATUS_MEASURE_PREPARE && (
-            <Fragment>
-              <span style={{ whiteSpace: 'inherit' }} ref={measureWhiteSpaceRef as any} />
-            </Fragment>
+            <span style={{ whiteSpace: 'inherit' }} ref={measureWhiteSpaceRef as any} />
           )}
         </>
       )

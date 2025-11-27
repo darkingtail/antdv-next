@@ -94,4 +94,5 @@ export interface TypographyBaseProps extends ComponentBaseProps {
   direction?: DirectionType
   classes?: TypographyClassNamesType
   styles?: TypographyStylesType
+  title?: string
 }

@@ -133,14 +133,15 @@ export default defineComponent<ButtonProps, ButtonEmits, string, SlotsType<Butto
 
 ## 🧰 Utility Imports
 
-| Utility | Source | Purpose |
-|----------|---------|---------|
-| `filterEmpty` | `@v-c/util/dist/props-util` | Remove empty vnode/fragments |
-| `getSlotPropFn` | `../_util/tools.ts` | Generate unified render function |
-| `classNames` | `@v-c/util` | Class merging utility |
-| `toArray` | `es-toolkit/compat` | Normalize child nodes |
+| Utility                           | Source | Purpose |
+|-----------------------------------|---------|---------|
+| `filterEmpty`                     | `@v-c/util/dist/props-util` | Remove empty vnode/fragments |
+| `getSlotPropFn`                   | `../_util/tools.ts` | Generate unified render function |
+| `classNames`                      | `@v-c/util` | Class merging utility |
+| `clsx`                            | `@v-c/util` | Class merging utility |
+| `toArray`                         | `es-toolkit/compat` | Normalize child nodes |
 | `useConfig`, `useComponentConfig` | `config-provider/context.ts` | Access global component config |
-| `useSize`, `useDisabledContext` | `config-provider/hooks` | Context utilities for sizing/disabled state |
+| `useSize`, `useDisabledContext`   | `config-provider/hooks` | Context utilities for sizing/disabled state |
 
 ## 🔠 Naming & Styling Conventions
 

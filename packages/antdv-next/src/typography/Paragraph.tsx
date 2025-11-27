@@ -11,10 +11,8 @@ const Paragraph = defineComponent<
   TypographyBaseEmits,
   string,
   SlotsType<TypographySlots>
->({
-  name: 'ATypographyParagraph',
-  inheritAttrs: false,
-  setup(props, { slots, attrs, emit }) {
+>(
+  (props, { slots, attrs, emit }) => {
     const listeners = {
       'onClick': (e: MouseEvent) => emit('click', e),
       'onCopy': (e?: MouseEvent) => emit('copy', e as any),
@@ -53,6 +51,10 @@ const Paragraph = defineComponent<
       )
     }
   },
-})
+  {
+    name: 'ATypographyParagraph',
+    inheritAttrs: false,
+  },
+)
 
 export default Paragraph

@@ -13,10 +13,8 @@ const Text = defineComponent<
   TypographyBaseEmits,
   string,
   SlotsType<TypographySlots>
->({
-  name: 'ATypographyText',
-  inheritAttrs: false,
-  setup(props, { slots, attrs, emit }) {
+>(
+  (props, { slots, attrs, emit }) => {
     const mergedEllipsis = computed(() => {
       const ellipsis = props.ellipsis
       if (ellipsis && typeof ellipsis === 'object') {
@@ -61,6 +59,10 @@ const Text = defineComponent<
       )
     }
   },
-})
+  {
+    name: 'ATypographyText',
+    inheritAttrs: false,
+  },
+)
 
 export default Text

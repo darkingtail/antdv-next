@@ -14,7 +14,7 @@ import {
   watch,
   watchEffect,
 } from 'vue'
-import { getAttrStyleAndClass, pureAttrs, useMergeSemantic, useToArr, useToProps } from '../../_util/hooks'
+import { getAttrStyleAndClass, useMergeSemantic, useToArr, useToProps } from '../../_util/hooks'
 import isNonNullable from '../../_util/isNonNullable'
 import { isStyleSupport } from '../../_util/styleChecker'
 import { toPropsRefs } from '../../_util/tools'
@@ -65,15 +65,13 @@ function wrapperDecorations(props: BlockProps, content: any) {
   return currentContent
 }
 
-export default defineComponent<
+const Base = defineComponent<
   BlockProps,
   TypographyBaseEmits,
   string,
   SlotsType<TypographySlots>
->({
-  name: 'ATypographyBase',
-  inheritAttrs: false,
-  setup(props, { slots, attrs, emit }) {
+>(
+  (props, { slots, attrs, emit }) => {
     const typographyRef = shallowRef<HTMLElement | { el?: HTMLElement }>()
     const typographyDom = computed(() => {
       const val = typographyRef.value as any
@@ -336,7 +334,6 @@ export default defineComponent<
     // Expand
     const renderExpand = () => {
       const { expandable, symbol } = ellipsisConfig.value
-      console.log(expandable, symbol)
       if (props.disabled)
         return null
       return expandable
@@ -424,7 +421,7 @@ export default defineComponent<
       renderOperations(canEllipsis),
     ]
 
-    const componentClassName = computed(() => classNames(
+    const componentCls = computed(() => classNames(
       {
         [`${prefixCls.value}-${props.type}`]: props.type,
         [`${prefixCls.value}-disabled`]: props.disabled,
@@ -433,24 +430,24 @@ export default defineComponent<
         [`${prefixCls.value}-ellipsis-multiple-line`]: cssLineClamp.value,
       },
       mergedClassNames.value.root,
-      attrClass,
     ))
 
-    const componentStyle = computed(() => [
-      mergedStyles.value.root,
-      attrStyle,
-    ])
-
-    const clickHandler = triggerType.value.includes('text')
-      ? onEditClick
-      : (e: MouseEvent) => emit('click', e)
-
     return () => {
-      const { className: attrClass, style: attrStyle } = getAttrStyleAndClass(attrs)
+      const { className: attrClass, style: attrStyle, restAttrs } = getAttrStyleAndClass(attrs)
+      const children = childrenNodes.value
+      const clickHandler = triggerType.value.includes('text')
+        ? onEditClick
+        : (e: MouseEvent) => emit('click', e)
+      const mergedClassName = classNames(componentCls.value, attrClass)
+      const mergedStyle = [
+        mergedStyles.value.root,
+        cssLineClamp.value ? { WebkitLineClamp: rows.value } : null,
+        attrStyle,
+      ]
 
       // =========================== Render ===========================
       if (editing.value) {
-        return () => (
+        return (
           <Editable
             value={editConfig.value.text ?? (getChildrenText.value != null ? String(getChildrenText.value) : '')}
             onSave={onEditChange}
@@ -478,25 +475,21 @@ export default defineComponent<
             isEllipsis={isMergedEllipsis.value}
           >
             <Typography
-              class={componentClassName.value}
+              class={mergedClassName}
               prefixCls={prefixCls.value}
-              style={componentStyle.value as any}
+              style={mergedStyle as any}
               component={props.component as any}
               ref={typographyRef}
               direction={mergedDirection.value}
-              {
-                ...{
-                  onClick: clickHandler,
-                  title: props.title,
-                }
-              }
+              onClick={clickHandler}
+              title={props.title!}
               aria-label={topAriaLabel.value as any}
               rootClass={props.rootClass}
-              {...pureAttrs(restAttrs)}
+              {...restAttrs}
             >
               <Ellipsis
                 enableMeasure={mergedEnableEllipsis.value && !cssEllipsis.value}
-                text={childrenNodes.value}
+                text={children}
                 rows={rows.value}
                 width={ellipsisWidth.value}
                 {
@@ -539,4 +532,10 @@ export default defineComponent<
       )
     }
   },
-})
+  {
+    name: 'ATypographyBase',
+    inheritAttrs: false,
+  },
+)
+
+export default Base

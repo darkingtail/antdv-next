@@ -1,7 +1,7 @@
 import type { SlotsType } from 'vue'
 import type { BlockProps, TypographyBaseEmits, TypographySlots } from './interface'
 import { omit } from 'es-toolkit'
-import { computed, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 import { devUseWarning, isDev } from '../_util/warning'
 import Base from './Base'
 
@@ -17,25 +17,12 @@ const Link = defineComponent<
   TypographyBaseEmits,
   string,
   SlotsType<TypographySlots>
->({
-  name: 'ATypographyLink',
-  inheritAttrs: false,
-  setup(props, { slots, attrs, emit }) {
+>(
+  (props, { slots, attrs, emit }) => {
     if (isDev) {
       const warning = devUseWarning('Typography.Link')
       warning(typeof props.ellipsis !== 'object', 'usage', '`ellipsis` only supports boolean value.')
     }
-
-    const mergedProps = computed(() => {
-      const rel = props.rel === undefined && (props.target || (attrs as any).target) === '_blank'
-        ? 'noopener noreferrer'
-        : props.rel
-
-      return {
-        ...props,
-        rel,
-      }
-    })
 
     const listeners = {
       'onClick': (e: MouseEvent) => emit('click', e),
@@ -49,29 +36,39 @@ const Link = defineComponent<
       'onUpdate:editing': (val: boolean) => emit('update:editing', val),
     }
 
-    const restAttrs = computed(() => omit(attrs as any, [
-      'onClick',
-      'onCopy',
-      'onExpand',
-      'onEditStart',
-      'onEditChange',
-      'onEditCancel',
-      'onEditEnd',
-      'onUpdate:expanded',
-      'onUpdate:editing',
-    ]))
+    return () => {
+      const rel = props.rel === undefined && (props.target || (attrs as any).target) === '_blank'
+        ? 'noopener noreferrer'
+        : props.rel
+      const restAttrs = omit(attrs as any, [
+        'onClick',
+        'onCopy',
+        'onExpand',
+        'onEditStart',
+        'onEditChange',
+        'onEditCancel',
+        'onEditEnd',
+        'onUpdate:expanded',
+        'onUpdate:editing',
+      ])
 
-    return () => (
-      <Base
-        {...(restAttrs.value as any)}
-        {...mergedProps.value}
-        ellipsis={!!props.ellipsis}
-        component="a"
-        v-slots={slots}
-        {...listeners}
-      />
-    )
+      return (
+        <Base
+          {...(restAttrs as any)}
+          {...props}
+          rel={rel}
+          ellipsis={!!props.ellipsis}
+          component="a"
+          v-slots={slots}
+          {...listeners}
+        />
+      )
+    }
   },
-})
+  {
+    name: 'ATypographyLink',
+    inheritAttrs: false,
+  },
+)
 
 export default Link

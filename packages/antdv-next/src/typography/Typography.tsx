@@ -8,15 +8,13 @@ import { toPropsRefs } from '../_util/tools.ts'
 import { useComponentBaseConfig } from '../config-provider/context'
 import useStyle from './style'
 
-export default defineComponent<
+const Typography = defineComponent<
   TypographyBaseProps,
   EmptyEmit,
   string,
   SlotsType<TypographySlots>
->({
-  name: 'ATypography',
-  inheritAttrs: false,
-  setup(props, { slots, attrs, expose }) {
+>(
+  (props, { slots, attrs, expose }) => {
     const {
       direction: contextDirection,
       prefixCls,
@@ -26,10 +24,10 @@ export default defineComponent<
     const { direction: typographyDirection } = toPropsRefs(props, 'direction')
     const [hashId, cssVarCls] = useStyle(prefixCls)
     const elementRef = shallowRef<HTMLElement>()
+
     expose({ el: elementRef })
 
     return () => {
-      const { rootClass } = props
       const Component = resolveDynamicComponent((props.component || 'article')) as any
       const direction = typographyDirection.value || contextDirection.value
       const { className, restAttrs, style } = getAttrStyleAndClass(attrs)
@@ -39,7 +37,7 @@ export default defineComponent<
         {
           [`${prefixCls.value}-rtl`]: direction === 'rtl',
         },
-        rootClass,
+        props.rootClass,
         className,
         hashId.value,
         cssVarCls.value,
@@ -55,6 +53,7 @@ export default defineComponent<
           class={componentClassName}
           style={mergedStyle}
           ref={elementRef}
+          title={props.title}
           {...restAttrs}
         >
           {slots.default?.()}
@@ -62,4 +61,10 @@ export default defineComponent<
       )
     }
   },
-})
+  {
+    name: 'ATypography',
+    inheritAttrs: false,
+  },
+)
+
+export default Typography

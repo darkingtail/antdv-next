@@ -16,10 +16,8 @@ const Title = defineComponent<
   TypographyBaseEmits,
   string,
   SlotsType<TypographySlots>
->({
-  name: 'ATypographyTitle',
-  inheritAttrs: false,
-  setup(props, { slots, attrs, emit }) {
+>(
+  (props, { slots, attrs, emit }) => {
     const level = computed(() => props.level ?? 1)
 
     if (isDev) {
@@ -71,6 +69,10 @@ const Title = defineComponent<
       )
     }
   },
-})
+  {
+    name: 'ATypographyTitle',
+    inheritAttrs: false,
+  },
+)
 
 export default Title

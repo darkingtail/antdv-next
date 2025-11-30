@@ -233,11 +233,11 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(vue@3.5.24(typescript@5.9.3))
       '@v-c/input':
-        specifier: link:/Users/yanyu/workspace/github/antdv-next/vue-components/packages/input
-        version: link:../../../../../github/antdv-next/vue-components/packages/input
+        specifier: ^1.0.0
+        version: 1.0.0(vue@3.5.24(typescript@5.9.3))
       '@v-c/input-number':
-        specifier: link:/Users/yanyu/workspace/github/antdv-next/vue-components/packages/input-number
-        version: link:../../../../../github/antdv-next/vue-components/packages/input-number
+        specifier: ^1.0.0
+        version: 1.0.0(vue@3.5.24(typescript@5.9.3))
       '@v-c/menu':
         specifier: ^1.0.0
         version: 1.0.0(vue@3.5.24(typescript@5.9.3))
@@ -262,9 +262,12 @@ importers:
       '@v-c/switch':
         specifier: ^0.0.1
         version: 0.0.1(vue@3.5.24(typescript@5.9.3))
+      '@v-c/tabs':
+        specifier: link:/Users/yanyu/workspace/github/antdv-next/vue-components/packages/tabs
+        version: link:../../../../../github/antdv-next/vue-components/packages/tabs
       '@v-c/textarea':
-        specifier: ^0.0.8
-        version: 0.0.8(vue@3.5.24(typescript@5.9.3))
+        specifier: ^1.0.0
+        version: 1.0.0(vue@3.5.24(typescript@5.9.3))
       '@v-c/tooltip':
         specifier: ^1.0.0
         version: 1.0.0(vue@3.5.24(typescript@5.9.3))
@@ -1564,8 +1567,13 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  '@v-c/input@0.0.2':
-    resolution: {integrity: sha512-AL5bRTO00CkA7vJZ+JS5sNgy/zrfmQWe4dRUoyZf/RWlVF/OWLnOr/rENKfQa6t4hFgcObt28YtCZewG3+KrPQ==}
+  '@v-c/input-number@1.0.0':
+    resolution: {integrity: sha512-a9BYB/K8zkdZwTyex4s/v7awbZ9+g3iMi8RPNoSVPN0kCacEA8l/9yqURRSn52C5im4Y7s02ogUdMGYbORDkOQ==}
+    peerDependencies:
+      vue: ^3.0.0
+
+  '@v-c/input@1.0.0':
+    resolution: {integrity: sha512-EhP5upp823RBQc4agnES0SbV0I85SVSFRqqy8H5RyooZPhIS9I+Hd3MIz9zql4k2k/10eeCleab/mhaAHqNqRw==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -1573,6 +1581,9 @@ packages:
     resolution: {integrity: sha512-k28vPfAzSWuwm0EZroroGa/tvcv6lWo4YROT3YfRkeZo3u3bCuvvHXh7a3iaMKebiN/2mmT8bMXzNC+lb4Ls3w==}
     peerDependencies:
       vue: ^3.0.0
+
+  '@v-c/mini-decimal@1.0.0':
+    resolution: {integrity: sha512-Y/viIYMEfaYOaKw7o0i5hlM9Q5N30yMhH7j5PXx/Zs60uPn2pMkLysuH8LHM33mAoibGFcBwvCgeuJIiZ5t4MA==}
 
   '@v-c/mutate-observer@0.0.2':
     resolution: {integrity: sha512-fPHCM80uQvG2Dayg4yDV9e/+7hkJzOktu9V1nJ/s0WWjI4WknyrIMJlhqEQ1RdhxTNg4dmjd/krW317w1i1cQg==}
@@ -1624,8 +1635,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  '@v-c/textarea@0.0.8':
-    resolution: {integrity: sha512-E4CNGy+S9sEg3kPdFKQ+jI0cIXQ8sZoCKYtCKK9feQS/dlF1MKZc2Rokpmuwtjr/d1JgIDRsP3jgpxv6IGIbKw==}
+  '@v-c/textarea@1.0.0':
+    resolution: {integrity: sha512-VeTpSUnqrtBGfBqif9Hcvco8xOTw3Ggrzzjd23OEwcmXIwOP3v1+C7FrJEL1iaD272Dn2YbCyLUrYXGHs2DnpA==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -5072,7 +5083,14 @@ snapshots:
       '@v-c/util': 1.0.1(vue@3.5.24(typescript@5.9.3))
       vue: 3.5.24(typescript@5.9.3)
 
-  '@v-c/input@0.0.2(vue@3.5.24(typescript@5.9.3))':
+  '@v-c/input-number@1.0.0(vue@3.5.24(typescript@5.9.3))':
+    dependencies:
+      '@v-c/input': 1.0.0(vue@3.5.24(typescript@5.9.3))
+      '@v-c/mini-decimal': 1.0.0
+      '@v-c/util': 1.0.1(vue@3.5.24(typescript@5.9.3))
+      vue: 3.5.24(typescript@5.9.3)
+
+  '@v-c/input@1.0.0(vue@3.5.24(typescript@5.9.3))':
     dependencies:
       '@v-c/util': 1.0.1(vue@3.5.24(typescript@5.9.3))
       vue: 3.5.24(typescript@5.9.3)
@@ -5083,6 +5101,8 @@ snapshots:
       '@v-c/trigger': 1.0.1(vue@3.5.24(typescript@5.9.3))
       '@v-c/util': 1.0.1(vue@3.5.24(typescript@5.9.3))
       vue: 3.5.24(typescript@5.9.3)
+
+  '@v-c/mini-decimal@1.0.0': {}
 
   '@v-c/mutate-observer@0.0.2(vue@3.5.24(typescript@5.9.3))':
     dependencies:
@@ -5139,9 +5159,9 @@ snapshots:
       '@v-c/util': 1.0.1(vue@3.5.24(typescript@5.9.3))
       vue: 3.5.24(typescript@5.9.3)
 
-  '@v-c/textarea@0.0.8(vue@3.5.24(typescript@5.9.3))':
+  '@v-c/textarea@1.0.0(vue@3.5.24(typescript@5.9.3))':
     dependencies:
-      '@v-c/input': 0.0.2(vue@3.5.24(typescript@5.9.3))
+      '@v-c/input': 1.0.0(vue@3.5.24(typescript@5.9.3))
       '@v-c/resize-observer': 1.0.0(vue@3.5.24(typescript@5.9.3))
       '@v-c/util': 1.0.1(vue@3.5.24(typescript@5.9.3))
       vue: 3.5.24(typescript@5.9.3)

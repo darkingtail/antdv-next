@@ -44,7 +44,7 @@ export interface InputNumberStepContext {
 
 export interface InputNumberProps
   extends ComponentBaseProps,
-  Omit<VcInputNumberProps, 'class' | 'controls' | 'className' | 'style' | 'prefixCls' | 'classNames' | 'styles' | 'prefix' | 'suffix'> {
+  Omit<VcInputNumberProps, 'class' | 'controls' | 'className' | 'style' | 'prefixCls' | 'classNames' | 'styles' | 'prefix' | 'suffix' | 'onChange' | 'onClick' | 'onInput' | 'onBeforeInput' | 'onBlur' | 'onCompositionEnd' | 'onCompositionStart' | 'onKeyDown' | 'onKeyUp' | 'onMouseDown' | 'onMouseEnter' | 'onPressEnter' | 'onMouseUp' | 'onMouseMove'> {
   size?: SizeType
   status?: InputStatus
   disabled?: boolean
@@ -115,6 +115,7 @@ const omitKeys: string[] = [
   'onPressEnter',
   'onStep',
   'onBeforeInput',
+  'keyboard',
   'onClick',
   'onMouseDown',
   'onMouseUp',
@@ -336,6 +337,7 @@ const InputNumber = defineComponent<
         <VcInputNumber
           {...restAttrs}
           {...restProps}
+          keyboard={props.keyboard}
           value={props.value}
           ref={inputNumberRef as any}
           prefixCls={prefixCls.value}

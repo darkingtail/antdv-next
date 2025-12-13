@@ -27,6 +27,7 @@ import type { TextAreaProps } from '../input/TextArea.tsx'
 import type { Locale } from '../locale'
 import type { MasonryProps } from '../masonry/Masonry.tsx'
 import type { MenuProps } from '../menu'
+import type { ModalProps } from '../modal/interface.ts'
 import type { ArgsProps as NotificationProps } from '../notification'
 import type { PopconfirmProps } from '../popconfirm'
 import type { PopoverProps } from '../popover'
@@ -307,6 +308,20 @@ export type CardConfig = ComponentStyleConfig
 
 export type DrawerConfig = ComponentStyleConfig
   & Pick<DrawerProps, 'classes' | 'styles' | 'closeIcon' | 'closable' | 'mask'>
+
+export type ModalConfig = ComponentStyleConfig
+  & Pick<
+    ModalProps,
+    | 'classes'
+    | 'styles'
+    | 'closeIcon'
+    | 'closable'
+    | 'centered'
+    | 'okButtonProps'
+    | 'cancelButtonProps'
+    | 'mask'
+  >
+
 export interface ConfigComponentProps {
   input?: InputConfig
   inputNumber?: InputNumberConfig
@@ -340,7 +355,7 @@ export interface ConfigComponentProps {
   layout?: ComponentStyleConfig
   // list?: ListConfig;
   // mentions?: MentionsConfig;
-  // modal?: ModalConfig;
+  modal?: ModalConfig
   progress?: ComponentStyleConfig
   result?: ResultConfig
   slider?: SliderConfig
@@ -442,6 +457,7 @@ export function useBaseConfig<K extends string>(suffixCls?: K, props?: Component
   const config = useConfig()
   return {
     result: computed(() => config.value?.result),
+    modal: computed(() => config.value?.modal),
     timeline: computed(() => config.value?.timeline),
     notification: computed(() => config.value?.notification),
     getPrefixCls: (suffixCls?: string, prefixCls?: string) => config.value?.getPrefixCls(suffixCls, prefixCls),

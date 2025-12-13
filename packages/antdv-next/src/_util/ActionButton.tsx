@@ -1,8 +1,8 @@
 import type { SlotsType } from 'vue'
-import { defineComponent, onBeforeUnmount, onMounted, shallowRef } from 'vue'
-import Button, { convertLegacyProps } from '../button'
 import type { ButtonProps, LegacyButtonType } from '../button'
 import type { EmptyEmit } from './type'
+import { defineComponent, onBeforeUnmount, onMounted, shallowRef } from 'vue'
+import Button, { convertLegacyProps } from '../button'
 
 function isThenable<T>(value?: PromiseLike<T>): value is PromiseLike<T> {
   return typeof value?.then === 'function'
@@ -96,7 +96,7 @@ const ActionButton = defineComponent<
         return
       }
 
-      let returnValue: PromiseLike<any> | void
+      let returnValue: any
       if (props.emitEvent) {
         returnValue = actionFn(e)
         if (props.quitOnNullishReturnValue && !isThenable(returnValue)) {

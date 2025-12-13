@@ -1,15 +1,15 @@
 import type { SlotsType } from 'vue'
-import type { ModalEmits, ModalProps, ModalSlots } from './interface.ts'
 import type { VueNode } from '../_util/type.ts'
+import type { ModalEmits, ModalProps, ModalSlots } from './interface.ts'
 import { CloseOutlined } from '@antdv-next/icons'
 import { computed, defineComponent } from 'vue'
+import { getSlotPropsFnRun } from '../_util/tools.ts'
 import { DisabledContextProvider } from '../config-provider/DisabledContext.tsx'
 import useLocale from '../locale/useLocale.ts'
-import { getSlotPropsFnRun } from '../_util/tools.ts'
-import { useModalProvider } from './context.ts'
-import { getConfirmLocale } from './locale.ts'
 import NormalCancelBtn from './components/NormalCancelBtn.tsx'
 import NormalOkBtn from './components/NormalOkBtn.tsx'
+import { useModalProvider } from './context.ts'
+import { getConfirmLocale } from './locale.ts'
 
 export function renderCloseIcon(prefixCls: string, closeIcon?: VueNode) {
   closeIcon = getSlotPropsFnRun({}, { closeIcon }, 'closeIcon')
@@ -40,10 +40,10 @@ export const Footer = defineComponent<
     const [locale] = useLocale('Modal', getConfirmLocale())
 
     const okTextLocale = computed(() => {
-      return getSlotPropsFnRun(slots, props, 'okText') ?? props.okText ?? locale.value?.okText
+      return getSlotPropsFnRun(slots, props, 'okText') ?? props.okText ?? locale?.value?.okText
     })
     const cancelTextLocale = computed(() => {
-      return getSlotPropsFnRun(slots, props, 'cancelText') ?? props.cancelText ?? locale.value?.cancelText
+      return getSlotPropsFnRun(slots, props, 'cancelText') ?? props.cancelText ?? locale?.value?.cancelText
     })
 
     const memoizedValue = computed(() => ({

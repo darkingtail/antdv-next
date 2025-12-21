@@ -1,19 +1,17 @@
 <docs lang="zh-CN">
-经典款式，用户点击按钮弹出文件选择框。
+复制文件后，在页面任意位置粘贴即可完成上传。
 </docs>
 
 <docs lang="en-US">
-Classic mode. File selection dialog pops up when upload button is clicked.
+Copy the file and paste it anywhere on the page to upload.
 </docs>
 
 <script setup lang="ts">
 import type { UploadEmits } from 'antdv-next'
 import { UploadOutlined } from '@antdv-next/icons'
 import { message } from 'antdv-next'
-import { ref } from 'vue'
 
-const fileList = ref([])
-const onChange: UploadEmits['change'] = (info) => {
+const handleChange: UploadEmits['change'] = (info) => {
   if (info.file?.status !== 'uploading') {
     console.log(info.file, info.fileList)
   }
@@ -28,19 +26,19 @@ const onChange: UploadEmits['change'] = (info) => {
 
 <template>
   <a-upload
-    v-model:file-list="fileList"
     name="file"
+    pastable
     action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
     :headers="{
       authorization: 'authorization-text',
     }"
-    @change="onChange"
+    @change="handleChange"
   >
     <a-button>
       <template #icon>
         <UploadOutlined />
       </template>
-      Click to Upload
+      Paste or click to upload
     </a-button>
   </a-upload>
 </template>

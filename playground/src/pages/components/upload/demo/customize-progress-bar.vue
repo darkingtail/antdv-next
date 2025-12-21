@@ -1,19 +1,17 @@
 <docs lang="zh-CN">
-经典款式，用户点击按钮弹出文件选择框。
+使用 `progress` 属性自定义进度条样式。
 </docs>
 
 <docs lang="en-US">
-Classic mode. File selection dialog pops up when upload button is clicked.
+Use `progress` for customize progress bar.
 </docs>
 
 <script setup lang="ts">
 import type { UploadEmits } from 'antdv-next'
 import { UploadOutlined } from '@antdv-next/icons'
 import { message } from 'antdv-next'
-import { ref } from 'vue'
 
-const fileList = ref([])
-const onChange: UploadEmits['change'] = (info) => {
+const handleChange: UploadEmits['change'] = (info) => {
   if (info.file?.status !== 'uploading') {
     console.log(info.file, info.fileList)
   }
@@ -24,17 +22,28 @@ const onChange: UploadEmits['change'] = (info) => {
     message.error(`${info.file.name} file upload failed.`)
   }
 }
+
+function formatPercent(percent?: number) {
+  return percent && `${Number.parseFloat(percent.toFixed(2))}%`
+}
 </script>
 
 <template>
   <a-upload
-    v-model:file-list="fileList"
     name="file"
     action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
     :headers="{
       authorization: 'authorization-text',
     }"
-    @change="onChange"
+    :progress="{
+      strokeColor: {
+        '0%': '#108ee9',
+        '100%': '#87d068',
+      },
+      size: 3,
+      format: formatPercent,
+    }"
+    @change="handleChange"
   >
     <a-button>
       <template #icon>

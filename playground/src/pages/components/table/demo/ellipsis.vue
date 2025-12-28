@@ -12,28 +12,47 @@ import type { TableProps } from 'antdv-next'
 interface DataType {
   key: string
   name: string
-  description: string
+  age: number
+  address: string
 }
 
 const columns: TableProps['columns'] = [
-  { title: 'Name', dataIndex: 'name', key: 'name', width: 160, ellipsis: true },
-  { title: 'Description', dataIndex: 'description', key: 'description', ellipsis: true },
+  { title: 'Name', dataIndex: 'name', key: 'name', width: 150 },
+  { title: 'Age', dataIndex: 'age', key: 'age', width: 80 },
+  { title: 'Address', dataIndex: 'address', key: 'address 1', ellipsis: true },
+  { title: 'Long Column Long Column Long Column', dataIndex: 'address', key: 'address 2', ellipsis: true },
+  { title: 'Long Column Long Column', dataIndex: 'address', key: 'address 3', ellipsis: true },
+  { title: 'Long Column', dataIndex: 'address', key: 'address 4', ellipsis: true },
 ]
 
 const dataSource: DataType[] = [
   {
     key: '1',
     name: 'John Brown',
-    description: 'This is a long description that should be truncated with ellipsis in the table cell.',
+    age: 32,
+    address: 'New York No. 1 Lake Park, New York No. 1 Lake Park',
   },
   {
     key: '2',
     name: 'Jim Green',
-    description: 'Another long description for demonstrating ellipsis in table columns.',
+    age: 42,
+    address: 'London No. 2 Lake Park, London No. 2 Lake Park',
+  },
+  {
+    key: '3',
+    name: 'Joe Black',
+    age: 32,
+    address: 'Sydney No. 1 Lake Park, Sydney No. 1 Lake Park',
   },
 ]
 </script>
 
 <template>
-  <a-table :columns="columns" :data-source="dataSource" />
+  <a-table :columns="columns" :data-source="dataSource">
+    <template #bodyCell="{ column, text }">
+      <template v-if="column.key === 'name'">
+        <a>{{ text }}</a>
+      </template>
+    </template>
+  </a-table>
 </template>

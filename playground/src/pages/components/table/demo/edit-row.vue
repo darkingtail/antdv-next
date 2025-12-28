@@ -17,7 +17,7 @@ interface DataType {
   address: string
 }
 
-const originData = Array.from({ length: 8 }).map<DataType>((_, i) => ({
+const originData = Array.from({ length: 100 }).map<DataType>((_, i) => ({
   key: i.toString(),
   name: `Edward ${i}`,
   age: 32,

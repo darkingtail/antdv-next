@@ -92,17 +92,17 @@ const localeValue = computed(() => {
 
 <template>
   <header
-    class="ant-doc-header a-bg-container sticky top-0 z-1000 w-full a-shadow-ter backdrop-blur-8px"
+    class="ant-doc-header sticky top-0 z-1000 w-full a-shadow-ter backdrop-blur-8px"
   >
     <a-row>
       <a-col :xxl="4" :xl="5" :lg="6" :md="6" :sm="24" :xs="24">
         <h1 class="m-0 p-0">
-          <a class="inline-flex items-center pl-40px h-[var(--ant-doc-header-height)] line-height-[var(--ant-doc-header-height)] text-18px font-bold a-color-text hover:a-color-text of-hidden" href="/">
+          <router-link class="inline-flex items-center pl-40px h-[var(--ant-doc-header-height)] line-height-[var(--ant-doc-header-height)] text-18px font-bold a-color-text hover:a-color-text of-hidden" to="/">
             <img src="../../assets/antdv-next.svg" class="w-36px h-36px inline-block align-middle" draggable="false" alt="logo">
             <span class="ml-2">
               Antdv Next
             </span>
-          </a>
+          </router-link>
         </h1>
       </a-col>
       <a-col :xxl="20" :xl="19" :lg="18" :md="18" :sm="0" :xs="0">
@@ -183,6 +183,7 @@ const localeValue = computed(() => {
 <style lang="less">
 .ant-doc-header {
   height: var(--ant-doc-header-height);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 .ant-doc-header a {
   white-space: nowrap;
@@ -200,6 +201,7 @@ const localeValue = computed(() => {
   min-width: 0;
   flex-shrink: 0;
   justify-content: flex-end;
+  background-color: transparent !important;
 
   .ant-menu-item {
     height: var(--ant-doc-header-height);
@@ -233,7 +235,7 @@ const localeValue = computed(() => {
     outline: none;
     transition: all 0.3s;
     color: rgba(0, 0, 0, 0.88);
-    background: #ffffff;
+    background: transparent;
   }
 }
 </style>

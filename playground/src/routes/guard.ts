@@ -13,7 +13,7 @@ export function setupRouterGuard(router: Router) {
       if (locale === 'zh-CN' && !to.path.endsWith('-cn')) {
         let path = to.path
         if (path === '/' || path === '') {
-          path = 'index-cn'
+          path = '/index-cn'
         }
         else {
           path = `${path}-cn`

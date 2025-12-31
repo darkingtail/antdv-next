@@ -64,6 +64,7 @@ export function presetAntd(options: AntdPresetOptions = {}) {
           colors: {
             ...builtPalettes,
             //  核心品牌色 (Primary)
+            'DEFAULT': `var(--${antPrefix}-color-primary)`,
             'primary': `var(--${antPrefix}-color-primary)`,
             'primary-hover': `var(--${antPrefix}-color-primary-hover)`,
             'primary-active': `var(--${antPrefix}-color-primary-active)`,

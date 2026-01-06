@@ -1,6 +1,5 @@
 export {}
 
-/* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
     AAffix: typeof import('antdv-next')['Affix']

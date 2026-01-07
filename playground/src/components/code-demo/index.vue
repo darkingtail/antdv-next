@@ -4,6 +4,7 @@ import demos from 'virtual:demos'
 import { computed, defineAsyncComponent, shallowRef } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import ExpandIcon from '@/components/code-demo/expand-icon.vue'
+import CodeIframe from '@/components/code-demo/iframe.vue'
 import { getId } from '@/components/code-demo/utils/getId'
 import ExternalLink from '@/components/icons/external-link.vue'
 import { useAppStore } from '@/stores/app.ts'
@@ -13,6 +14,7 @@ defineOptions({
 })
 const { src } = defineProps<{
   src: string
+  iframe?: string
 }>()
 const demo = computed(() => demos[src])
 const route = useRoute()
@@ -48,7 +50,7 @@ function handleScroll(e: Event) {
 
 <template>
   <section :id="id" ref="domRef" class="ant-doc-demo-box border-1 border-solid border-color-split" :class="active ? 'border-primary' : ''">
-    <section class="vp-raw ant-doc-demo-box-demo">
+    <section v-if="!iframe" class="vp-raw ant-doc-demo-box-demo">
       <Suspense>
         <component :is="component" v-if="demo?.component" />
         <template #fallback>
@@ -56,6 +58,9 @@ function handleScroll(e: Event) {
         </template>
       </Suspense>
     </section>
+    <template v-else>
+      <CodeIframe :src="id" :height="iframe" />
+    </template>
     <section class="ant-doc-demo-box-meta markdown">
       <div class="ant-doc-demo-box-title">
         <a :href="`#${id}`" @click="handleScroll">

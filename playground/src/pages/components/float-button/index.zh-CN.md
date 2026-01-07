@@ -17,6 +17,7 @@ demo:
 ## 示例 {#examples}
 
 <demo-group>
+  <demo src="./demo/back-top.vue" iframe="360">回到顶部</demo>
 </demo-group>
 
 ## API

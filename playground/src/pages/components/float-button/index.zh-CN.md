@@ -48,7 +48,7 @@ demo:
 | trigger | 触发方式（有触发方式为菜单模式） | `click` \| `hover` | - | - |
 | open | 受控展开，需配合 trigger 一起使用 | boolean | - | - |
 | closeIcon | 自定义关闭按钮 | VueNode | `<CloseOutlined />` | - |
-| placement | 自定义菜单弹出位置 | `top` \| `left` \| `right` \| `bottom` | `top` | 5.21.0 |
+| placement | 自定义菜单弹出位置 | `top` \| `left` \| `right` \| `bottom` | `top` | - |
 | classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record&lt;[SemanticDOM](#semantic-dom), string&gt; \| (info: \{ props \})=&gt; Record&lt;[SemanticDOM](#semantic-dom), string&gt; | - | - |
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties&gt; \| (info: \{ props \})=&gt; Record&lt;[SemanticDOM](#semantic-dom), CSSProperties&gt; | - | - |
 
@@ -59,13 +59,13 @@ demo:
 | icon | 自定义图标 | VueNode | - | - |
 | content | 文字及其它内容 | VueNode | - | - |
 | ~~description~~ | 请使用 `content` 代替 | VueNode | - | - |
-| tooltip | 气泡卡片的内容 | VueNode \| TooltipProps | - | TooltipProps: 5.25.0 |
+| tooltip | 气泡卡片的内容 | VueNode \| TooltipProps | - | - |
 | type | 设置按钮类型 | `default` \| `primary` | `default` | - |
 | shape | 设置按钮形状 | `circle` \| `square` | `circle` | - |
 | href | 点击跳转的地址，指定此属性 button 的行为和 a 链接一致 | string | - | - |
 | target | 相当于 a 标签的 target 属性，href 存在时生效 | string | - | - |
-| htmlType | 设置 `button` 原生的 `type` 值，可选值请参考 [HTML 标准](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button#type) | `submit` \| `reset` \| `button` | `button` | 5.21.0 |
-| badge | 带徽标数字的悬浮按钮（不支持 `status` 以及相关属性） | [BadgeProps](/components/badge-cn#api) | - | 5.4.0 |
+| htmlType | 设置 `button` 原生的 `type` 值，可选值请参考 [HTML 标准](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button#type) | `submit` \| `reset` \| `button` | `button` | - |
+| badge | 带徽标数字的悬浮按钮（不支持 `status` 以及相关属性） | [BadgeProps](/components/badge-cn#api) | - | - |
 | classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record&lt;[SemanticDOM](#semantic-dom), string&gt; \| (info: \{ props \})=&gt; Record&lt;[SemanticDOM](#semantic-dom), string&gt; | - | - |
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties&gt; \| (info: \{ props \})=&gt; Record&lt;[SemanticDOM](#semantic-dom), CSSProperties&gt; | - | - |
 
@@ -89,7 +89,8 @@ demo:
 
 | 事件 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
-| click | 点击按钮时的回调（仅在菜单模式中有效） | (e: MouseEvent) =&gt; void | 5.3.0 |
+| update:open | 展开收起时的回调，需配合 trigger 一起使用 | (open: boolean) =&gt; void | - |
+| click | 点击按钮时的回调（仅在菜单模式中有效） | (e: MouseEvent) =&gt; void | - |
 
 #### FloatButton.BackTop
 

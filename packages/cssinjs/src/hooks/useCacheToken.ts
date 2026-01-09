@@ -2,6 +2,7 @@ import type { Ref } from 'vue'
 import type Theme from '../theme/Theme'
 import type { ExtractStyle } from './useGlobalCache'
 import hash from '@emotion/hash'
+import canUseDom from '@v-c/util/dist/Dom/canUseDom'
 import { updateCSS } from '@v-c/util/dist/Dom/dynamicCSS'
 import { computed } from 'vue'
 import { ATTR_MARK, ATTR_TOKEN, CSS_IN_JS_INSTANCE, useStyleContext } from '../StyleContext'
@@ -210,6 +211,9 @@ export default function useCacheToken<
       cleanTokenStyle(themeKey, styleContext.value.cache.instanceId)
     },
     ([, , , cssVarsStr, themeKey]) => {
+      if (!canUseDom()) {
+        return
+      }
       if (!cssVarsStr) {
         return
       }
@@ -223,8 +227,7 @@ export default function useCacheToken<
           priority: -999,
         },
       )
-
-      ;(style as any)[CSS_IN_JS_INSTANCE] = styleContext.value.cache.instanceId
+        ;(style as any)[CSS_IN_JS_INSTANCE] = styleContext.value.cache.instanceId
       // Used for `useCacheToken` to remove on batch when token removed
       style.setAttribute(ATTR_TOKEN, themeKey)
     },

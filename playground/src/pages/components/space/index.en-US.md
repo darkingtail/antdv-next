@@ -21,6 +21,10 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*37T2R6O9oi0AAA
 <demo src="./demo/wrap.vue">Wrap</demo>
 <demo src="./demo/separator.vue">Separator</demo>
 <demo src="./demo/compact.vue">Compact Mode for form component</demo>
+<demo src="./demo/compact-buttons.vue">Button Compact Mode</demo>
+<demo src="./demo/compact-button-vertical.vue">Vertical Compact Mode</demo>
+<demo src="./demo/style-class.vue">Custom semantic dom styling</demo>
+
 </demo-group>
 
 ## API

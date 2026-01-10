@@ -22,6 +22,9 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*37T2R6O9oi0AAA
 <demo src="./demo/wrap.vue">自动换行</demo>
 <demo src="./demo/separator.vue">分隔符</demo>
 <demo src="./demo/compact.vue">紧凑布局组合</demo>
+<demo src="./demo/compact-buttons.vue">Button 紧凑布局</demo>
+<demo src="./demo/compact-button-vertical.vue">垂直方向紧凑布局</demo>
+<demo src="./demo/style-class.vue">自定义语义结构的样式和类</demo>
 </demo-group>
 
 ## API

@@ -3,7 +3,8 @@ import type { ComponentBaseProps, DirectionType } from '../config-provider/conte
 import type { SizeType } from '../config-provider/SizeContext'
 import { classNames } from '@v-c/util'
 import { filterEmpty } from '@v-c/util/dist/props-util'
-import { computed, defineComponent, inject, provide, ref } from 'vue'
+import { computed, defineComponent, inject, provide, ref, toRefs } from 'vue'
+import { useOrientation } from '../_util/hooks/useOrientation.ts'
 import { useConfig } from '../config-provider/context.ts'
 import { useSize } from '../config-provider/hooks/useSize.ts'
 import useStyle from './style/compact'
@@ -12,6 +13,8 @@ export interface SpaceCompactProps extends ComponentBaseProps {
   size?: SizeType
   direction?: 'horizontal' | 'vertical'
   block?: boolean
+  orientation?: 'horizontal' | 'vertical'
+  vertical?: boolean
 }
 export interface SpaceCompactItemContextType {
   compactSize?: SizeType
@@ -78,8 +81,14 @@ const Compact = defineComponent<SpaceCompactProps>(
     const prefixCls = computed(() => configContext.value?.getPrefixCls?.('space-compact', props.prefixCls))
     const [hashId, cssVarCls] = useStyle(prefixCls)
     const compactItemContext = useSpaceCompactItemContext()
+
+    const { direction, vertical, orientation } = toRefs(props)
+
+    const [mergedOrientation, mergedVertical] = useOrientation(orientation, vertical, direction)
+
     return () => {
-      const { rootClass, direction, block } = props
+      const { rootClass, block } = props
+
       const directionConfig = configContext.value?.direction
       const clx = classNames(
         prefixCls.value,
@@ -88,7 +97,7 @@ const Compact = defineComponent<SpaceCompactProps>(
         {
           [`${prefixCls.value}-rtl`]: directionConfig === 'rtl',
           [`${prefixCls.value}-block`]: block,
-          [`${prefixCls.value}-vertical`]: direction === 'vertical',
+          [`${prefixCls.value}-vertical`]: mergedVertical.value,
         },
         rootClass,
       )
@@ -99,7 +108,7 @@ const Compact = defineComponent<SpaceCompactProps>(
         return (
           <CompactItem
             compactSize={mergedSize.value}
-            compactDirection={direction}
+            compactDirection={mergedOrientation.value}
             isFirstItem={i === 0 && (!compactItemContext.value || compactItemContext.value?.isFirstItem)}
             key={key}
             isLastItem={

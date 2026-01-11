@@ -1,3 +1,13 @@
+<docs lang="zh-CN">
+## 搜索并排序
+搜索并对选项进行排序。
+</docs>
+
+<docs lang="en-US">
+## Search with sort
+Search the options with sorting.
+</docs>
+
 <script setup lang="ts">
 import { shallowRef } from 'vue'
 

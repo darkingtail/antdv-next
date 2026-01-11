@@ -1,3 +1,13 @@
+<docs lang="zh-CN">
+## 自定义搜索
+使用 `filterOption` 自定义搜索。
+</docs>
+
+<docs lang="en-US">
+## Custom Search
+Customize search using `filterOption`.
+</docs>
+
 <script setup lang="ts">
 import { shallowRef } from 'vue'
 

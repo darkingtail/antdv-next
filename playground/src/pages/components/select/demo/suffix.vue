@@ -1,3 +1,13 @@
+<docs lang="zh-CN">
+## 前缀和后缀
+自定义 `prefix` 和 `suffixIcon`。
+</docs>
+
+<docs lang="en-US">
+## Prefix and Suffix
+Custom `prefix` and `suffixIcon`.
+</docs>
+
 <script setup lang="ts">
 import { MehOutlined, SmileOutlined } from '@antdv-next/icons'
 import { shallowRef } from 'vue'

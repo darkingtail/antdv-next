@@ -1,3 +1,13 @@
+<docs lang="zh-CN">
+## 自定义 Tag 渲染
+允许自定义标签的渲染。
+</docs>
+
+<docs lang="en-US">
+## Custom Tag Render
+Allows for custom rendering of tags.
+</docs>
+
 <script setup lang="ts">
 import { shallowRef } from 'vue'
 

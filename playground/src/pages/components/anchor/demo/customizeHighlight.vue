@@ -12,6 +12,7 @@ const getCurrentAnchor = () => '#anchor-demo-static'
 
 <template>
   <a-anchor
+    :affix="false"
     :get-current-anchor="getCurrentAnchor"
     :items="[
       {

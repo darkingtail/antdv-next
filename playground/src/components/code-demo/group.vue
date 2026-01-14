@@ -67,6 +67,7 @@ onUnmounted(() => {
     ref="containerRef"
     class="ant-doc-demo-group"
     :style="waterfallStyle"
+    :class="pageInfo?.frontmatter?.demo?.class"
   >
     <slot />
   </div>

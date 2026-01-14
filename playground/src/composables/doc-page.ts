@@ -7,6 +7,7 @@ export interface Frontmatter {
   tag?: string
   demo?: {
     cols?: number
+    class?: string
   }
   [key: string]: any
 }

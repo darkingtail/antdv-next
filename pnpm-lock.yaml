@@ -97,8 +97,8 @@ catalogs:
       specifier: ^1.0.3
       version: 1.0.3
     '@v-c/dialog':
-      specifier: ^0.0.2
-      version: 0.0.2
+      specifier: ^0.0.3
+      version: 0.0.3
     '@v-c/drawer':
       specifier: ^0.0.2
       version: 0.0.2
@@ -130,8 +130,8 @@ catalogs:
       specifier: ^0.0.1
       version: 0.0.1
     '@v-c/picker':
-      specifier: ^0.0.4
-      version: 0.0.4
+      specifier: ^0.0.5
+      version: 0.0.5
     '@v-c/progress':
       specifier: ^0.0.2
       version: 0.0.2
@@ -478,7 +478,7 @@ importers:
         version: 1.0.3(vue@3.5.25(typescript@5.9.3))
       '@v-c/dialog':
         specifier: 'catalog:'
-        version: 0.0.2(vue@3.5.25(typescript@5.9.3))
+        version: 0.0.3(vue@3.5.25(typescript@5.9.3))
       '@v-c/drawer':
         specifier: 'catalog:'
         version: 0.0.2(vue@3.5.25(typescript@5.9.3))
@@ -511,7 +511,7 @@ importers:
         version: 0.0.1(vue@3.5.25(typescript@5.9.3))
       '@v-c/picker':
         specifier: 'catalog:'
-        version: 0.0.4(dayjs@1.11.19)(vue@3.5.25(typescript@5.9.3))
+        version: 0.0.5(dayjs@1.11.19)(vue@3.5.25(typescript@5.9.3))
       '@v-c/progress':
         specifier: 'catalog:'
         version: 0.0.2(vue@3.5.25(typescript@5.9.3))
@@ -2185,8 +2185,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  '@v-c/dialog@0.0.2':
-    resolution: {integrity: sha512-4R3wt58MKHZ8RMExUj4y6+MwGGbPztOtOO8ztgw459tgdxQXZ41KhDy2rrlT0yQ6PDBH5UqTKfBlqNPxqVjtAw==}
+  '@v-c/dialog@0.0.3':
+    resolution: {integrity: sha512-V0v4Pe+9rUWjXJaubkii1rX2JyD0nG6DpsEC74QQ8+i+vQ7sXpeHjgPKch0zfzhDbBEIx7i0pB1In72VxJQyWw==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -2248,8 +2248,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  '@v-c/picker@0.0.4':
-    resolution: {integrity: sha512-U8GNEDDVMiLQGd0Wptz9yr5zZxp5oWdI6WeKZW6Rf2WGwdTO5IEZoFR/CaXL2/TmRVOKvpGbYHYeBH+fOJZdhQ==}
+  '@v-c/picker@0.0.5':
+    resolution: {integrity: sha512-017KQ5GKG9+AnsUQa7hO3gRRcKZF8nB0fUq5hSeYO1eSEgqYB5O19Onikg7zv3xHb3m55yXZBuI7WMkWYmCQiw==}
     peerDependencies:
       date-fns: '>= 2.x'
       dayjs: '>= 1.x'
@@ -6955,7 +6955,7 @@ snapshots:
       '@v-c/util': 1.0.7(vue@3.5.25(typescript@5.9.3))
       vue: 3.5.25(typescript@5.9.3)
 
-  '@v-c/dialog@0.0.2(vue@3.5.25(typescript@5.9.3))':
+  '@v-c/dialog@0.0.3(vue@3.5.25(typescript@5.9.3))':
     dependencies:
       '@v-c/portal': 1.0.1(vue@3.5.25(typescript@5.9.3))
       '@v-c/util': 1.0.7(vue@3.5.25(typescript@5.9.3))
@@ -7031,7 +7031,7 @@ snapshots:
       '@v-c/util': 1.0.7(vue@3.5.25(typescript@5.9.3))
       vue: 3.5.25(typescript@5.9.3)
 
-  '@v-c/picker@0.0.4(dayjs@1.11.19)(vue@3.5.25(typescript@5.9.3))':
+  '@v-c/picker@0.0.5(dayjs@1.11.19)(vue@3.5.25(typescript@5.9.3))':
     dependencies:
       '@v-c/overflow': 1.0.1(vue@3.5.25(typescript@5.9.3))
       '@v-c/trigger': 1.0.2(vue@3.5.25(typescript@5.9.3))

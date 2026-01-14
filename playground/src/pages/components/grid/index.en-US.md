@@ -5,6 +5,8 @@ title: Grid
 description: 24 Grids System.
 cover: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*mfJeS6cqZrEAAAAAAAAAAAAADrJ8AQ/original
 coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*DLUwQ4B2_zQAAAAAAAAAAAAADrJ8AQ/original
+demo:
+    class: grid-demo-box
 ---
 
 <DocHeading></DocHeading>

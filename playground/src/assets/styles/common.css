@@ -20,16 +20,16 @@ html {
   background: #364d79;
 }
 
-.ant-doc-demo-box-demo .ant-row > div:not(.gutter-row):nth-child(2n + 1) {
+.grid-demo-box .ant-doc-demo-box-demo .ant-row > div:not(.gutter-row):nth-child(2n + 1) {
   background: #1677ffbf;
 }
 
-.ant-doc-demo-box-demo .ant-row > div:not(.gutter-row) {
+.grid-demo-box .ant-doc-demo-box-demo .ant-row > div:not(.gutter-row) {
   padding: 16px 0;
   background: #1677ff;
 }
 
-.ant-doc-demo-box-demo .ant-row > div {
+.grid-demo-box .ant-doc-demo-box-demo .ant-row > div {
   min-height: 30px;
   margin-top: 8px;
   margin-bottom: 8px;

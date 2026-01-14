@@ -33,7 +33,7 @@ catalog:
   '@v-c/checkbox': ^0.0.2
   '@v-c/collapse': ^0.0.5
   '@v-c/color-picker': ^1.0.3
-  '@v-c/dialog': ^0.0.2
+  '@v-c/dialog': ^0.0.3
   '@v-c/drawer': ^0.0.2
   '@v-c/dropdown': ^1.0.1
   '@v-c/image': ^0.0.1
@@ -44,7 +44,7 @@ catalog:
   '@v-c/mutate-observer': ^0.0.2
   '@v-c/notification': ^0.0.2
   '@v-c/pagination': ^0.0.1
-  '@v-c/picker': ^0.0.4
+  '@v-c/picker': ^0.0.5
   '@v-c/progress': ^0.0.2
   '@v-c/qrcode': ^0.0.5
   '@v-c/rate': ^0.0.2

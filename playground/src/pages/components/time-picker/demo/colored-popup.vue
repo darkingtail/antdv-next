@@ -1,19 +1,18 @@
 <docs lang="zh-CN">
-点击 TimePicker，然后可以在浮层中选择或者输入某一时间。
+将自定义 class 传给 `TimePicker` 弹框。
 </docs>
 
 <docs lang="en-US">
-Click `TimePicker`, and then we could select or input a time in panel.
+Passing custom class to `TimePicker` popup.
 </docs>
 
 <script setup lang="ts">
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
-import { shallowRef } from 'vue'
 
 dayjs.extend(customParseFormat)
 
-const value = shallowRef()
+const defaultOpenValue = dayjs('00:00:00', 'HH:mm:ss')
 
 function onChange(time: any, timeString: string) {
   console.log(time, timeString)
@@ -22,7 +21,8 @@ function onChange(time: any, timeString: string) {
 
 <template>
   <a-time-picker
-    v-model:value="value"
+    :default-open-value="defaultOpenValue"
+    :classes="{ popup: { root: 'myCustomClassName' } }"
     @change="onChange"
   />
 </template>

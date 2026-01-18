@@ -14,6 +14,7 @@ import type {
 import VcUpload from '@v-c/upload'
 import { clsx } from '@v-c/util'
 import { filterEmpty } from '@v-c/util/dist/props-util'
+import { omit } from 'es-toolkit'
 import { computed, defineComponent, nextTick, shallowRef, watch } from 'vue'
 import { getAttrStyleAndClass, useMergeSemantic, useToArr, useToProps } from '../_util/hooks'
 import { toPropsRefs } from '../_util/tools'
@@ -477,7 +478,7 @@ const InternalUpload = defineComponent<
         onError,
         onProgress,
         onSuccess,
-        ...props,
+        ...omit(props, ['classes', 'styles', 'rootClass', 'locale', 'maxCount', 'beforeUpload', 'onRemove', 'onPreview', 'onDownload']),
         customRequest: customRequest.value,
         data: props.data ?? {},
         multiple: multiple ?? false,
@@ -495,6 +496,14 @@ const InternalUpload = defineComponent<
         name,
       }
 
+      delete rcUploadProps.class
+      delete rcUploadProps.className
+      delete rcUploadProps.style
+
+      // Remove id to avoid open by label when trigger is hidden
+      // !children: https://github.com/ant-design/ant-design/issues/14298
+      // disabled: https://github.com/ant-design/ant-design/issues/16478
+      //           https://github.com/ant-design/ant-design/issues/24197
       if (!hasChildren || mergedDisabled.value) {
         delete rcUploadProps.id
       }

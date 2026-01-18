@@ -7,7 +7,8 @@
       "@/*": ["./src/*"],
       "@antdv-next/cssinjs": ["../packages/cssinjs/src/index.ts"],
       "@antdv-next/cssinjs/cssinjs-utils": ["../packages/cssinjs/src/cssinjs-utils/index.ts"],
-      "antdv-next": ["../packages/antdv-next/src/index.ts"]
+      "antdv-next": ["../packages/antdv-next/src/index.ts"],
+      "antdv-next/*": ["../packages/antdv-next/src/*"]
     },
     "types": [
       "vite/client",

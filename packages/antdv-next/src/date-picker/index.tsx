@@ -1,5 +1,6 @@
 import type { Dayjs } from 'dayjs'
 import type { App } from 'vue'
+import type { DatePickerEmits, DatePickerSlots } from './generatePicker/generateSinglePicker'
 import type {
   RangePickerProps as BaseRangePickerProps,
   PickerProps,
@@ -9,6 +10,11 @@ import dayjsGenerateConfig from '@v-c/picker/generate/dayjs'
 import generatePicker from './generatePicker'
 
 export type { PickerLocale } from './generatePicker'
+
+export type {
+  DatePickerEmits,
+  DatePickerSlots,
+}
 
 export type DatePickerProps<
   ValueType = Dayjs,

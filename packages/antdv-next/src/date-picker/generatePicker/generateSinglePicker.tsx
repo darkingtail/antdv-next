@@ -176,6 +176,9 @@ function generatePicker<DateType extends AnyObject = AnyObject>(generateConfig: 
 
         const handleCalendarChange = (date: DateType | DateType[], dateStr: string | string[], info: any) => {
           emit('calendarChange', date, dateStr, info)
+          if ((props as any).multiple && !(props as any).needConfirm) {
+            triggerChange(date as DateType[], dateStr as string[])
+          }
           if (picker === TIME && !(props as any).multiple) {
             emit('select', (date as DateType[])[0] ?? (date as DateType))
           }

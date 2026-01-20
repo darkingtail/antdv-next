@@ -17,13 +17,13 @@ demo:
 ## 示例 {#examples}
 
 <demo-group>
-<demo src="./demo/basic.vue">基本用法</demo>
-<demo src="./demo/disabled.vue">失效</demo>
-<demo src="./demo/controller.vue">受控的 Checkbox</demo>
-<demo src="./demo/group.vue">Checkbox 组</demo>
-<demo src="./demo/check-all.vue">全选</demo>
-<demo src="./demo/layout.vue">布局</demo>
-<demo src="./demo/style-class.vue">自定义语义结构的样式和类</demo>
+  <demo src="./demo/basic.vue">基本用法</demo>
+  <demo src="./demo/disabled.vue">失效</demo>
+  <demo src="./demo/controller.vue">受控的 Checkbox</demo>
+  <demo src="./demo/group.vue">Checkbox 组</demo>
+  <demo src="./demo/check-all.vue">全选</demo>
+  <demo src="./demo/layout.vue">布局</demo>
+  <demo src="./demo/style-class.vue">自定义语义结构的样式和类</demo>
 </demo-group>
 
 ## API
@@ -38,31 +38,17 @@ demo:
 | --- | --- | --- | --- | --- |
 | checked | 指定当前是否选中 | boolean | false | - |
 | disabled | 失效状态 | boolean | false | - |
-| title | - | string | - | - |
-| value | - | any | - | - |
-| tabIndex | - | number | - | - |
-| name | - | string | - | - |
-| id | - | string | - | - |
-| autoFocus | - | boolean | - | - |
-| type | - | string | - | - |
-| skipGroup | - | boolean | - | - |
-| required | - | boolean | - | - |
 | indeterminate | 设置 indeterminate 状态，只负责样式控制 | boolean | false | - |
-| classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | CheckboxClassNamesType | - | - |
-| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | CheckboxStylesType | - | - |
+| classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record&lt;[SemanticDOM](#semantic-dom), string&gt; \| (info: \{ props \})=&gt; Record&lt;[SemanticDOM](#semantic-dom), string&gt; | - | - |
+| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties&gt; \| (info: \{ props \})=&gt; Record&lt;[SemanticDOM](#semantic-dom), CSSProperties&gt; | - | - |
 
 #### 事件 {#checkbox-events}
 
 | 事件 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
-| change | 变化时的回调函数 | (checked: CheckboxChangeEvent) =&gt; void | - |
-| mouseenter | - | (event: MouseEvent) =&gt; void | - |
-| mouseleave | - | (event: MouseEvent) =&gt; void | - |
-| keypress | - | (event: KeyboardEvent) =&gt; void | - |
-| keydown | - | (event: KeyboardEvent) =&gt; void | - |
-| focus | 获得焦点时的回调 | (event: FocusEvent) =&gt; void | - |
-| blur | 失去焦点时的回调 | (event: FocusEvent) =&gt; void | - |
-| click | - | (event: MouseEvent) =&gt; void | - |
+| change | 变化时的回调函数 | (e: CheckboxChangeEvent) =&gt; void | - |
+| focus | 获得焦点时的回调 | function() | - |
+| blur | 失去焦点时的回调 | function() | - |
 
 ### CheckboxGroup
 
@@ -70,18 +56,17 @@ demo:
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
-| options | - | (CheckboxOptionType \| string \| number)[] | - | - |
-| disabled | 失效状态 | boolean | false | - |
-| name | - | string | - | - |
-| defaultValue | - | any[] | - | - |
-| value | - | any[] | - | - |
+| options | 指定可选项 | string\[] \| number\[] \| Option\[] | \[] | - |
+| disabled | 整组失效 | boolean | false | - |
+| name | CheckboxGroup 下所有 `input[type="checkbox"]` 的 `name` 属性 | string | - | - |
+| value | 指定选中的选项 | (string \| number \| boolean)\[] | \[] | - |
 | labelRender | - | (params: &#123; item: CheckboxOptionType, index: number &#125;) =&gt; any | - | - |
 
 #### 事件 {#checkboxgroup-events}
 
 | 事件 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
-| change | 变化时的回调函数 | (checkedValue: any[]) =&gt; void | - |
+| change | 变化时的回调函数 | (checkedValue: T[]) =&gt; void | - |
 
 #### 插槽 {#checkboxgroup-slots}
 

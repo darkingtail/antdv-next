@@ -44,7 +44,7 @@ export default defineComponent<
       if (children.length) {
         const child = children[0]
         return cloneVNode(child, {
-          class: classNames(`${prefixCls.value}-custom-component`, child.props?.class, attrClass as any),
+          class: classNames(`${prefixCls.value}-custom-component`, child.props?.class),
         })
       }
 

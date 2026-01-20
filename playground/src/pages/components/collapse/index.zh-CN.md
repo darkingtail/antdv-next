@@ -33,11 +33,10 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*sir-TK0HkWcAAA
 
 ## API
 
-### 属性 {#property}
-
 通用属性参考：[通用属性](/docs/vue/common-props)
+### Collapse
 
-#### Collapse
+#### 属性 {#props}
 
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
@@ -47,60 +46,67 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*sir-TK0HkWcAAA
 | destroyOnHidden | 销毁折叠隐藏的面板 | boolean | false | - |
 | rootClass | 根节点 class | string | - | - |
 | bordered | 带边框风格的折叠面板 | boolean | true | - |
-| prefixCls | - | string | - | - |
 | expandIcon | 自定义切换图标 | (panelProps: PanelProps) =&gt; any | - | - |
 | expandIconPlacement | 设置图标位置 | ExpandIconPlacement | `start` | - |
 | ghost | 使折叠面板透明且无边框 | boolean | false | - |
 | size | 设置折叠面板大小 | SizeType | `middle` | - |
 | collapsible | 所有子面板是否可折叠或指定可折叠触发区域 | CollapsibleType | - | - |
-| labelRender | - | (params: &#123; item: CollapseItemType, index: number &#125;) =&gt; any | - | - |
-| contentRender | - | (params: &#123; item: CollapseItemType, index: number &#125;) =&gt; any | - | - |
+| labelRender | 自定义渲染label | (params: &#123; item: CollapseItemType, index: number &#125;) =&gt; any | - | - |
+| contentRender | 自定义渲染内容 | (params: &#123; item: CollapseItemType, index: number &#125;) =&gt; any | - | - |
 | classes | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | CollapseClassNamesType | - | - |
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | CollapseStylesType | - | - |
 | items | 折叠项目内容 | CollapseItemType[] | - | - |
 
-#### ItemType {#itemtype}
-
-| 参数 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
-| classNames | 语义化结构 class | Record&lt;[SemanticDOM](#semantic-dom), string&gt; | - | - |
-| collapsible | 是否可折叠或指定可折叠触发区域 | CollapsibleType | - | - |
-| content | body 区域内容 | VueNode | - | - |
-| extra | 自定义渲染每个面板右上角的内容 | VueNode | - | - |
-| forceRender | 被隐藏时是否渲染 body 区域 DOM 结构 | boolean | false | - |
-| key | 对应 activeKey | string \| number | - | - |
-| label | 面板标题 | VueNode | - | - |
-| showArrow | 是否展示当前面板上的箭头（为 false 时，collapsible 不能设为 icon） | boolean | true | - |
-| styles | 语义化结构 style | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties&gt; | - | - |
-
-#### CollapsePanel {#collapsepanel}
-
-已废弃：优先使用 `items` 配置面板。
-
-| 参数 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
-| key | - | string \| number | - | - |
-| header | - | VueNode | - | - |
-| showArrow | - | boolean | true | - |
-| prefixCls | - | string | - | - |
-| forceRender | - | boolean | false | - |
-| id | - | string | - | - |
-| extra | - | VueNode | - | - |
-| collapsible | 所有子面板是否可折叠或指定可折叠触发区域 | CollapsibleType | - | - |
-
-### 事件 {#events}
+#### 事件 {#events}
 
 | 事件 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
 | change | 切换面板的回调 | (key: string[]) =&gt; void | - |
 
-### 插槽 {#slots}
+#### 插槽 {#slots}
 
 | 插槽 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
 | expandIcon | 自定义切换图标 | (panelProps: PanelProps) =&gt; any | - |
 | labelRender | - | (params: &#123; item: CollapseItemType, index: number &#125;) =&gt; any | - |
 | contentRender | - | (params: &#123; item: CollapseItemType, index: number &#125;) =&gt; any | - |
+
+### CollapsePanel {#collapsepanel}
+
+#### Props {#collapsepanel-props}
+
+:::warning 已废弃
+请使用 items 方式配置面板。
+:::
+
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| collapsible | 是否可折叠或指定可折叠触发区域 | `header` \| `icon` \| `disabled` | - | - |
+| forceRender | 被隐藏时是否渲染 body 区域 DOM 结构 | boolean | false |  |
+| key | 对应 activeKey | string \| number | - |  |
+| showArrow | 是否展示当前面板上的箭头（为 false 时，collapsible 不能设为 icon） | boolean | true |  |
+
+#### Slots {#collapsepanel-slots}
+
+| 插槽 | 说明 | 类型 | 版本 |
+| --- | --- | --- | --- |
+| header | 面板标题 | VueNode | - |
+| extra | 自定义渲染每个面板右上角的内容 | VueNode | - |
+
+## 类型 {#types}
+
+### ItemType {#itemtype}
+
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| classes | 语义化结构 class | [`Record<header \| body, string>`](#semantic-dom) | - | - |
+| collapsible | 是否可折叠或指定可折叠触发区域 | `header` \| `icon` \| `disabled` | - |  |
+| extra | 自定义渲染每个面板右上角的内容 | VueNode | - |  |
+| forceRender | 被隐藏时是否渲染 body 区域 DOM 结构 | boolean | false |  |
+| key | 对应 activeKey | string \| number | - |  |
+| label | 面板标题 | VueNode | - | - |
+| showArrow | 是否展示当前面板上的箭头（为 false 时，collapsible 不能设为 icon） | boolean | true |  |
+| styles | 语义化结构 style | [`Record<header \| body, CSSProperties>`](#semantic-dom) | - | - |
 
 ## Semantic DOM {#semantic-dom}
 

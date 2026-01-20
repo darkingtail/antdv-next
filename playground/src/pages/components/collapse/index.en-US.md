@@ -32,11 +32,11 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*sir-TK0HkWcAAA
 
 ## API
 
-### Property {#property}
-
 Common props ref：[Common props](/docs/vue/common-props)
 
-#### Collapse
+### Collapse
+
+#### Props {#props}
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
@@ -46,23 +46,51 @@ Common props ref：[Common props](/docs/vue/common-props)
 | destroyOnHidden | Destroy Inactive Panel | boolean | false | - |
 | rootClass | Root container class | string | - | - |
 | bordered | Toggles rendering of the border around the collapse block | boolean | true | - |
-| prefixCls | - | string | - | - |
 | expandIcon | Allow to customize collapse icon | (panelProps: PanelProps) =&gt; any | - | - |
 | expandIconPlacement | Set expand icon placement | ExpandIconPlacement | `start` | - |
 | ghost | Make the collapse borderless and its background transparent | boolean | false | - |
 | size | Set the size of collapse | SizeType | `middle` | - |
 | collapsible | Specify how to trigger Collapse. Either by clicking icon or by clicking any area in header or disable collapse functionality itself | CollapsibleType | - | - |
-| labelRender | - | (params: &#123; item: CollapseItemType, index: number &#125;) =&gt; any | - | - |
-| contentRender | - | (params: &#123; item: CollapseItemType, index: number &#125;) =&gt; any | - | - |
+| labelRender | Custom render label | (params: &#123; item: CollapseItemType, index: number &#125;) =&gt; any | - | - |
+| contentRender | Custom render content | (params: &#123; item: CollapseItemType, index: number &#125;) =&gt; any | - | - |
 | classes | Customize class for each semantic structure inside the component. Supports object or function. | CollapseClassNamesType | - | - |
 | styles | Customize inline style for each semantic structure inside the component. Supports object or function. | CollapseStylesType | - | - |
 | items | Collapse items content | CollapseItemType[] | - | - |
 
-#### ItemType {#itemtype}
+#### Events {#events}
+
+| Event | Description | Type | Version |
+| --- | --- | --- | --- |
+| change | Callback function executed when active panel is changed | (key: string[]) =&gt; void | - |
+
+#### Slots {#slots}
+
+| Slot | Description | Type | Version |
+| --- | --- | --- | --- |
+| expandIcon | Allow to customize collapse icon | (panelProps: PanelProps) =&gt; any | - |
+| labelRender | - | (params: &#123; item: CollapseItemType, index: number &#125;) =&gt; any | - |
+| contentRender | - | (params: &#123; item: CollapseItemType, index: number &#125;) =&gt; any | - |
+
+### CollapsePanel {#collapsepanel}
+
+#### Props {#collapsepanel-props}
+
+Deprecated: when using items, prefer configuring panels with `items`.
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
-| classNames | Semantic structure class names | Record&lt;[SemanticDOM](#semantic-dom), string&gt; | - | - |
+| header | - | VueNode | - | - |
+| showArrow | - | boolean | true | - |
+| extra | - | VueNode | - | - |
+| collapsible | Specify how to trigger Collapse. Either by clicking icon or by clicking any area in header or disable collapse functionality itself | CollapsibleType | - | - |
+
+## Types {#types}
+
+### ItemType {#itemtype}
+
+| Property | Description | Type | Default | Version |
+| --- | --- | --- | --- | --- |
+| classes | Semantic structure class | Record&lt;[SemanticDOM](#semantic-dom), string&gt; | - | - |
 | collapsible | Specify whether the panel be collapsible or the trigger area of collapsible | CollapsibleType | - | - |
 | content | Body area content | VueNode | - | - |
 | extra | The extra element in the corner | VueNode | - | - |
@@ -70,36 +98,7 @@ Common props ref：[Common props](/docs/vue/common-props)
 | key | Unique key identifying the panel from among its siblings | string \| number | - | - |
 | label | Title of the panel | VueNode | - | - |
 | showArrow | If false, panel will not show arrow icon. If false, collapsible can't be set as icon | boolean | true | - |
-| styles | Semantic structure styles | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties&gt; | - | - |
-
-#### CollapsePanel {#collapsepanel}
-
-Deprecated: when using items, prefer configuring panels with `items`.
-
-| Property | Description | Type | Default | Version |
-| --- | --- | --- | --- | --- |
-| key | - | string \| number | - | - |
-| header | - | VueNode | - | - |
-| showArrow | - | boolean | true | - |
-| prefixCls | - | string | - | - |
-| forceRender | - | boolean | false | - |
-| id | - | string | - | - |
-| extra | - | VueNode | - | - |
-| collapsible | Specify how to trigger Collapse. Either by clicking icon or by clicking any area in header or disable collapse functionality itself | CollapsibleType | - | - |
-
-### Events {#events}
-
-| Event | Description | Type | Version |
-| --- | --- | --- | --- |
-| change | Callback function executed when active panel is changed | (key: string[]) =&gt; void | - |
-
-### Slots {#slots}
-
-| Slot | Description | Type | Version |
-| --- | --- | --- | --- |
-| expandIcon | Allow to customize collapse icon | (panelProps: PanelProps) =&gt; any | - |
-| labelRender | - | (params: &#123; item: CollapseItemType, index: number &#125;) =&gt; any | - |
-| contentRender | - | (params: &#123; item: CollapseItemType, index: number &#125;) =&gt; any | - |
+| styles | Semantic structure style | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties&gt; | - | - |
 
 ## Semantic DOM {#semantic-dom}
 

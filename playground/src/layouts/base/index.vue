@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import * as process from 'node:process'
 import { theme } from 'antdv-next'
 import en from 'antdv-next/locale/en_US'
 import cn from 'antdv-next/locale/zh_CN'
@@ -37,7 +36,7 @@ const algorithm = computed(() => {
   return algorithms
 })
 
-const zeroRuntime = process.env.NODE_ENV === 'production'
+const zeroRuntime = import.meta.env.PROD === true
 </script>
 
 <template>

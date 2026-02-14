@@ -8,6 +8,7 @@ export default defineConfig({
     '!src/**/tests/*',
     '!src/**/*.test.ts',
     '!src/**/*.test.tsx',
+    '!src/index.with-locales.ts',
   ],
   unbundle: true,
   format: 'es',

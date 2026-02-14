@@ -19,6 +19,11 @@
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     },
+    "./with-locales": {
+      "types": "./dist/index.with.locale.d.ts",
+      "import": "./dist/index.with.locale.js",
+      "default": "./dist/index.with.locale.js"
+    },
     "./dist/*": {
       "types": "./dist/*.d.ts",
       "import": "./dist/*.js",
@@ -91,9 +96,11 @@
   },
   "scripts": {
     "test": "vitest run",
-    "build": "run-s build:esm build:umd build:p",
+    "build": "run-s build:esm build:umd build:with-locales build:p",
     "build:p": "run-p build:web-types build:style",
     "build:esm": "tsdown",
+    "build:with-locales": "vite build --config ./vite.with-locales.config.ts",
+    "build:full-esm": "vite build --config ./vite.esm.config.ts",
     "build:umd": "vite build",
     "build:web-types": "tsx ./scripts/web-types/index.ts",
     "build:llm": "tsx ./scripts/llm/generate-llms.ts",

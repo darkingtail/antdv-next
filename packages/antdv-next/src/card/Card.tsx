@@ -178,6 +178,7 @@ const Card = defineComponent<
 
     const onTabChange = (key: string) => {
       emit('tabChange', key)
+      emit('update:activeTabKey', key)
     }
 
     const [hashId, cssVarCls] = useStyle(prefixCls)

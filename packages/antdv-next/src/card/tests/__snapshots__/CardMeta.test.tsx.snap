@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`cardMeta > should match snapshot 1`] = `
+"<div class="ant-card-meta">
+  <div class="ant-card-meta-avatar"><span>A</span></div>
+  <div class="ant-card-meta-section">
+    <div class="ant-card-meta-title">Card Meta Title</div>
+    <div class="ant-card-meta-description">Card Meta Description</div>
+  </div>
+</div>"
+`;

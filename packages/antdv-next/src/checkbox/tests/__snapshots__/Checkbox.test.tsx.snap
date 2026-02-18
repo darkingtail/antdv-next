@@ -1,0 +1,35 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`checkbox > rtl render > component should be rendered correctly in RTL direction 1`] = `
+<div
+  data-v-app=""
+>
+  <label
+    class="ant-checkbox-wrapper ant-checkbox-rtl css-var-root ant-checkbox-css-var"
+  >
+    <span
+      class="ant-checkbox ant-wave-target ant-wave-target"
+    >
+      <input
+        class="ant-checkbox-input"
+        type="checkbox"
+      />
+    </span>
+    <!---->
+  </label>
+</div>
+`;
+
+exports[`checkbox > should match snapshot - basic 1`] = `"<label class="ant-checkbox-wrapper css-var-root ant-checkbox-css-var"><span class="ant-checkbox ant-wave-target ant-wave-target"><input class="ant-checkbox-input" type="checkbox"></span><span class="ant-checkbox-label">Checkbox</span></label>"`;
+
+exports[`checkbox > should match snapshot - checked 1`] = `"<label class="ant-checkbox-wrapper ant-checkbox-wrapper-checked css-var-root ant-checkbox-css-var"><span class="ant-checkbox ant-wave-target ant-checkbox-checked ant-wave-target"><input class="ant-checkbox-input" checked="" type="checkbox"></span><span class="ant-checkbox-label">Checkbox</span></label>"`;
+
+exports[`checkbox > should match snapshot - disabled 1`] = `"<label class="ant-checkbox-wrapper ant-checkbox-wrapper-disabled css-var-root ant-checkbox-css-var"><span class="ant-checkbox ant-wave-target ant-checkbox-disabled ant-wave-target"><input class="ant-checkbox-input" disabled="" type="checkbox"></span><span class="ant-checkbox-label">Checkbox</span></label>"`;
+
+exports[`checkbox > should match snapshot - indeterminate 1`] = `"<label class="ant-checkbox-wrapper css-var-root ant-checkbox-css-var"><span class="ant-checkbox ant-checkbox-indeterminate ant-wave-target ant-checkbox-indeterminate ant-wave-target"><input class="ant-checkbox-input" type="checkbox"></span><span class="ant-checkbox-label">Checkbox</span></label>"`;
+
+exports[`checkboxGroup > should match snapshot - basic group 1`] = `"<div class="ant-checkbox-group css-var-root ant-checkbox-css-var" role="group"><label class="ant-checkbox-wrapper ant-checkbox-group-item css-var-root ant-checkbox-css-var"><span class="ant-checkbox ant-wave-target ant-wave-target"><input class="ant-checkbox-input" type="checkbox"></span><span class="ant-checkbox-label">Apple</span></label><label class="ant-checkbox-wrapper ant-checkbox-group-item css-var-root ant-checkbox-css-var"><span class="ant-checkbox ant-wave-target ant-wave-target"><input class="ant-checkbox-input" type="checkbox"></span><span class="ant-checkbox-label">Pear</span></label><label class="ant-checkbox-wrapper ant-checkbox-group-item css-var-root ant-checkbox-css-var"><span class="ant-checkbox ant-wave-target ant-wave-target"><input class="ant-checkbox-input" type="checkbox"></span><span class="ant-checkbox-label">Orange</span></label></div>"`;
+
+exports[`checkboxGroup > should match snapshot - disabled group 1`] = `"<div class="ant-checkbox-group css-var-root ant-checkbox-css-var" role="group"><label class="ant-checkbox-wrapper ant-checkbox-wrapper-disabled ant-checkbox-group-item css-var-root ant-checkbox-css-var"><span class="ant-checkbox ant-wave-target ant-checkbox-disabled ant-wave-target"><input class="ant-checkbox-input" disabled="" type="checkbox"></span><span class="ant-checkbox-label">Apple</span></label><label class="ant-checkbox-wrapper ant-checkbox-wrapper-disabled ant-checkbox-group-item css-var-root ant-checkbox-css-var"><span class="ant-checkbox ant-wave-target ant-checkbox-disabled ant-wave-target"><input class="ant-checkbox-input" disabled="" type="checkbox"></span><span class="ant-checkbox-label">Pear</span></label><label class="ant-checkbox-wrapper ant-checkbox-wrapper-disabled ant-checkbox-group-item css-var-root ant-checkbox-css-var"><span class="ant-checkbox ant-wave-target ant-checkbox-disabled ant-wave-target"><input class="ant-checkbox-input" disabled="" type="checkbox"></span><span class="ant-checkbox-label">Orange</span></label></div>"`;
+
+exports[`checkboxGroup > should match snapshot - group with value 1`] = `"<div class="ant-checkbox-group css-var-root ant-checkbox-css-var" role="group"><label class="ant-checkbox-wrapper ant-checkbox-wrapper-checked ant-checkbox-group-item css-var-root ant-checkbox-css-var"><span class="ant-checkbox ant-wave-target ant-checkbox-checked ant-wave-target"><input class="ant-checkbox-input" checked="" type="checkbox"></span><span class="ant-checkbox-label">Apple</span></label><label class="ant-checkbox-wrapper ant-checkbox-wrapper-checked ant-checkbox-group-item css-var-root ant-checkbox-css-var"><span class="ant-checkbox ant-wave-target ant-checkbox-checked ant-wave-target"><input class="ant-checkbox-input" checked="" type="checkbox"></span><span class="ant-checkbox-label">Pear</span></label><label class="ant-checkbox-wrapper ant-checkbox-group-item css-var-root ant-checkbox-css-var"><span class="ant-checkbox ant-wave-target ant-wave-target"><input class="ant-checkbox-input" type="checkbox"></span><span class="ant-checkbox-label">Orange</span></label></div>"`;

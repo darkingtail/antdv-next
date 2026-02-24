@@ -305,6 +305,7 @@ const InternalCascader = defineComponent<
     if (isDev) {
       const warning = devUseWarning('Cascader')
       const deprecatedProps = {
+        popupClassName: 'classNames.popup.root',
         dropdownClassName: 'classNames.popup.root',
         dropdownStyle: 'styles.popup.root',
         dropdownRender: 'popupRender',

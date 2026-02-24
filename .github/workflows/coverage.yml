@@ -42,8 +42,6 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: antdv-next/antdv-next
-          files: ./coverage/coverage-final.json
-          fail_ci_if_error: true
 
       - name: Upload coverage artifact
         if: ${{ always() }}

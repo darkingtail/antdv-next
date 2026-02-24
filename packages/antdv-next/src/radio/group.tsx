@@ -40,11 +40,10 @@ const RadioGroup = defineComponent<
     const onRadioChange = (e: RadioChangeEvent) => {
       const lastValue = value.value
       const val = e.target.value
+      props?.['onUpdate:value']?.(val)
       if (val !== lastValue) {
         emit('change', e)
-        emit('update:value', val)
       }
-
       if (props.value === undefined) {
         value.value = val
       }
@@ -53,9 +52,7 @@ const RadioGroup = defineComponent<
     watch(
       () => props.value,
       () => {
-        if (props.value !== undefined) {
-          value.value = props.value
-        }
+        value.value = props.value
       },
     )
     const groupPrefixCls = computed(() => `${prefixCls.value}-group`)

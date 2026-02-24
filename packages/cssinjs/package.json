@@ -1,7 +1,7 @@
 {
   "name": "@antdv-next/cssinjs",
   "type": "module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "cssinjs solution for ant-design-vue",
   "repository": {
     "type": "git",
@@ -25,6 +25,9 @@
       "default": "./dist/*.js"
     }
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "package.json"

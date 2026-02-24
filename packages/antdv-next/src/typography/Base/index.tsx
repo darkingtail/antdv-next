@@ -116,10 +116,7 @@ const Base = defineComponent<
     // ========================== Editable ==========================
     const [enableEdit, editConfig] = useMergedConfig<EditConfig>(computed(() => props.editable))
     const editing = shallowRef(editConfig.value.editing ?? false)
-    watch(editConfig, (config) => {
-      if (config.editing !== undefined)
-        editing.value = !!config.editing
-    })
+    watch(() => editConfig.value.editing, val => (editing.value = !!val))
     const triggerType = computed(() => editConfig.value.triggerType ?? ['icon'])
 
     const triggerEdit = (edit: boolean) => {
@@ -197,8 +194,7 @@ const Base = defineComponent<
     watch(
       () => ellipsisConfig.value.expanded,
       (val) => {
-        if (val !== undefined)
-          expanded.value = val
+        expanded.value = !!val
       },
     )
 
@@ -266,6 +262,8 @@ const Base = defineComponent<
     }
 
     const ellipsisWidth = shallowRef(0)
+    const isHoveringOperations = shallowRef(false)
+    const isHoveringTypography = shallowRef(false)
     const onResize = ({ offsetWidth }: { offsetWidth: number }) => {
       ellipsisWidth.value = offsetWidth
     }
@@ -409,11 +407,30 @@ const Base = defineComponent<
     }
 
     const renderOperations = (canEllipsis: boolean) => {
-      return [
-        canEllipsis && renderExpand(),
-        renderEdit(),
-        renderCopy(),
-      ]
+      const expandNode = canEllipsis && renderExpand()
+      const editNode = renderEdit()
+      const copyNode = renderCopy()
+
+      if (!expandNode && !editNode && !copyNode) {
+        return null
+      }
+
+      return (
+        <span
+          key="operations"
+          class={`${prefixCls.value}-actions`}
+          onMouseenter={() => {
+            isHoveringOperations.value = true
+          }}
+          onMouseleave={() => {
+            isHoveringOperations.value = false
+          }}
+        >
+          {expandNode}
+          {editNode}
+          {copyNode}
+        </span>
+      )
     }
 
     const renderEllipsis = (canEllipsis: boolean) => {
@@ -442,6 +459,12 @@ const Base = defineComponent<
 
     return () => {
       const { className: attrClass, style: attrStyle, restAttrs } = getAttrStyleAndClass(attrs)
+      const onMouseenter = (restAttrs as any).onMouseenter ?? (restAttrs as any).onMouseEnter
+      const onMouseleave = (restAttrs as any).onMouseleave ?? (restAttrs as any).onMouseLeave
+      delete (restAttrs as any).onMouseenter
+      delete (restAttrs as any).onMouseEnter
+      delete (restAttrs as any).onMouseleave
+      delete (restAttrs as any).onMouseLeave
       const children = filterEmpty(slots?.default?.())
       childrenNodes.value = children
       const clickHandler = triggerType.value.includes('text')
@@ -482,6 +505,7 @@ const Base = defineComponent<
             tooltipProps={tooltipProps.value}
             enableEllipsis={mergedEnableEllipsis.value}
             isEllipsis={isMergedEllipsis.value}
+            open={isHoveringTypography.value && !isHoveringOperations.value}
           >
             <Typography
               class={mergedClassName}
@@ -491,6 +515,14 @@ const Base = defineComponent<
               ref={typographyRef}
               direction={mergedDirection.value}
               onClick={clickHandler}
+              onMouseenter={(e: MouseEvent) => {
+                isHoveringTypography.value = true
+                onMouseenter?.(e)
+              }}
+              onMouseleave={(e: MouseEvent) => {
+                isHoveringTypography.value = false
+                onMouseleave?.(e)
+              }}
               title={props.title!}
               aria-label={topAriaLabel.value as any}
               rootClass={props.rootClass}

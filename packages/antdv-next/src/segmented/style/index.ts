@@ -3,6 +3,7 @@ import type { FullToken, GenerateStyle, GetDefaultToken } from '../../theme/inte
 
 import { unit } from '@antdv-next/cssinjs'
 import { genFocusOutline, genFocusStyle, resetComponent, textEllipsis } from '../../style'
+import { genNoMotionStyle } from '../../style/motion'
 import { genStyleHooks, mergeToken } from '../../theme/internal'
 
 export interface ComponentToken {
@@ -103,6 +104,7 @@ const genSegmentedStyle: GenerateStyle<SegmentedToken, CSSObject> = (token) => {
       background: token.trackBg,
       borderRadius: token.borderRadius,
       transition: `all ${motionDurationMid}`,
+      ...genNoMotionStyle(),
       ...genFocusStyle(token),
 
       [`${componentCls}-group`]: {
@@ -147,6 +149,7 @@ const genSegmentedStyle: GenerateStyle<SegmentedToken, CSSObject> = (token) => {
         textAlign: 'center',
         cursor: 'pointer',
         transition: `color ${motionDurationMid}`,
+        ...genNoMotionStyle(),
         borderRadius: token.borderRadiusSM,
         // Fix Safari render bug
         // https://github.com/ant-design/ant-design/issues/45250
@@ -175,6 +178,7 @@ const genSegmentedStyle: GenerateStyle<SegmentedToken, CSSObject> = (token) => {
           transition: ['opacity', 'background-color']
             .map(prop => `${prop} ${motionDurationMid}`)
             .join(', '),
+          ...genNoMotionStyle(),
         },
 
         [`&:not(${componentCls}-item-selected):not(${componentCls}-item-disabled)`]: {
@@ -268,6 +272,7 @@ const genSegmentedStyle: GenerateStyle<SegmentedToken, CSSObject> = (token) => {
         transition: [`transform`, `width`]
           .map(prop => `${prop} ${motionDurationSlow} ${motionEaseInOut}`)
           .join(', '),
+        ...genNoMotionStyle(),
       },
 
       [`&${componentCls}-shape-round`]: {

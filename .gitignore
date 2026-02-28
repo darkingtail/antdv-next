@@ -30,6 +30,8 @@ web-types.json
 web-tags.json
 docs/src/assets/token-meta.json
 docs/src/assets/token.json
+playground/src/assets/token-meta.json
+playground/src/assets/token.json
 docs/public/llms.txt
 docs/public/llms-full.txt
 docs/public/llms-full-cn.txt

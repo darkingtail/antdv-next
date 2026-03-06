@@ -4,7 +4,7 @@ import { theme } from 'antdv-next'
 import { computed } from 'vue'
 import { createStyles } from '../hooks'
 
-const useStyles = createStyles(({ css, cssVar }) => {
+const useStyles = createStyles(({ cssVar, css }) => {
   const sharedBorder = {
     border: `${cssVar.lineWidth}px ${cssVar.lineType} ${cssVar.colorBorder}`,
   }
@@ -12,9 +12,9 @@ const useStyles = createStyles(({ css, cssVar }) => {
   return {
     sharedBorder: css(sharedBorder),
     progressTrack: css({
-      border: `${cssVar.lineWidth} ${cssVar.lineType} ${cssVar.colorBorder}`,
-      marginInlineStart: `calc(-1 * ${cssVar.lineWidth})`,
-      marginBlockStart: `calc(-1 * ${cssVar.lineWidth})`,
+      ...sharedBorder,
+      marginInlineStart: `calc(-1 * ${cssVar.lineWidth}px)`,
+      marginBlockStart: `calc(-1 * ${cssVar.lineWidth}px)`,
     }),
   }
 })
@@ -88,14 +88,19 @@ const useCartoonTheme: UseTheme = () => {
     progress: {
       classes: {
         rail: styles.sharedBorder,
-        track: styles.progressTrack,
       },
       styles: {
         rail: {
+          border: '2px solid #225555',
+          boxSizing: 'border-box',
           height: '16px',
         },
         track: {
+          border: '2px solid #225555',
+          boxSizing: 'border-box',
           height: '16px',
+          marginInlineStart: '-2px',
+          marginBlockStart: '-2px',
         },
       },
     },

@@ -48,7 +48,7 @@ export type ProgressStylesType = SemanticStylesType<ProgressProps, ProgressSeman
 export const ProgressTypes = ['line', 'circle', 'dashboard'] as const
 export type ProgressType = (typeof ProgressTypes)[number]
 const ProgressStatuses = ['normal', 'exception', 'active', 'success'] as const
-export type ProgressSize = 'default' | 'small'
+export type ProgressSize = 'small' | 'medium' | 'default'
 export type StringGradients = Record<string, string>
 interface FromToGradients { from: string, to: string }
 export type ProgressGradient = { direction?: string } & (StringGradients | FromToGradients)
@@ -101,7 +101,7 @@ export interface ProgressSlots {
 const defaultProps = {
   percent: 0,
   showInfo: true,
-  size: 'default',
+  size: 'medium',
   type: 'line',
   percentPosition: {},
 } as ProgressProps
@@ -212,6 +212,8 @@ const Progress = defineComponent<
           )
         }
       }
+
+      warning.deprecated(props.size !== 'default', 'size="default"', 'size="medium"')
     }
 
     const progressInfo = computed(() => {
@@ -318,7 +320,7 @@ const Progress = defineComponent<
           [`${prefixCls.value}-line-position-${infoPosition.value}`]: isPureLineType.value,
           [`${prefixCls.value}-steps`]: props.steps,
           [`${prefixCls.value}-show-info`]: mergedShowInfo.value,
-          [`${prefixCls.value}-${mergedSize.value}`]: typeof mergedSize.value === 'string',
+          [`${prefixCls.value}-small`]: mergedSize.value === 'small',
           [`${prefixCls.value}-rtl`]: direction.value === 'rtl',
         },
         contextClassName.value,
@@ -330,8 +332,8 @@ const Progress = defineComponent<
       )
 
       const rootStyle = [
-        mergedStyles.value.root,
         contextStyle.value,
+        mergedStyles.value.root,
         attrStyle,
       ]
 

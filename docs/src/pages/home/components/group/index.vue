@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { theme } from 'antdv-next'
 
-defineProps<{
+const props = defineProps<{
   id?: string
   title?: string
   titleColor?: string
   description?: string
   background?: string
   collapse?: boolean
+  backgroundPrefetchList?: string[]
 }>()
 
 const { token } = theme.useToken()
@@ -16,19 +17,18 @@ const { token } = theme.useToken()
 <template>
   <div
     class="antdv-home-group-container"
-    :style="{ backgroundColor: background }"
+    :style="props.background?.startsWith('https')
+      ? { backgroundImage: `url(${props.background})` }
+      : { backgroundColor: props.background }"
   >
-    <!-- Decoration container -->
     <div class="antdv-home-group-decoration-container">
       <slot name="decoration" />
     </div>
 
-    <!-- Main content wrapper -->
     <div
       class="antdv-home-group-mask-layer"
-      :style="{ paddingBlock: `80px` }"
+      :style="{ paddingBlock: `${token?.marginFarSM ?? 80}px` }"
     >
-      <!-- Typography wrapper -->
       <div class="antdv-home-group-typography-wrapper text-center">
         <a-typography-title
           :id="id"
@@ -36,6 +36,7 @@ const { token } = theme.useToken()
           :style="{
             fontWeight: 900,
             color: titleColor,
+            margin: 0,
             fontSize: `${token?.fontSizeHeading1}px`,
           }"
         >
@@ -44,14 +45,13 @@ const { token } = theme.useToken()
         <a-typography-paragraph
           :style="{
             color: titleColor,
-            marginBottom: `48px`,
+            marginBottom: `${token?.marginFarXS ?? 48}px`,
           }"
         >
           {{ description }}
         </a-typography-paragraph>
       </div>
 
-      <!-- Content container -->
       <div :class="{ 'antdv-home-group-margin-style': !collapse }">
         <div v-if="$slots.default">
           <slot />
@@ -66,6 +66,9 @@ const { token } = theme.useToken()
 .antdv-home-group-container {
   position: relative;
   transition: all var(--ant-motion-duration-slow);
+  background-size: cover;
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
 }
 
 .antdv-home-group-decoration-container {

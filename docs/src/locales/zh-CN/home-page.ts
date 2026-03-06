@@ -72,6 +72,9 @@ export default {
     icon: '图标按钮',
     hello: '你好,Antdv Next!',
     release: 'Antdv Next 1.0 正式发布!',
+    segmentedDaily: '每日',
+    segmentedWeekly: '每周',
+    segmentedMonthly: '每月',
   },
 
   previewThemes: {

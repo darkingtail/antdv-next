@@ -122,7 +122,7 @@ const Line = defineComponent<
       // ========================= Rail =========================
       const railStyle = {
         backgroundColor: mergedRailColor || undefined,
-        borderRadius: `${borderRadius}px`,
+        borderRadius: borderRadius !== undefined ? `${borderRadius}px` : undefined,
         height: `${height}px`,
       }
 

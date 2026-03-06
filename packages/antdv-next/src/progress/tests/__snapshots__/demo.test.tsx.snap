@@ -138,7 +138,7 @@ exports[`progress demo > renders _semantic correctly 1`] = `
             aria-valuemax="100"
             aria-valuemin="0"
             aria-valuenow="80"
-            class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default semantic-mark-root css-var-v-0"
+            class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info semantic-mark-root css-var-v-0"
             role="progressbar"
           >
             <div
@@ -790,7 +790,7 @@ exports[`progress demo > renders circle correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="75"
-    class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -846,7 +846,7 @@ exports[`progress demo > renders circle correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="70"
-    class="ant-progress ant-progress-status-exception ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-exception ant-progress-circle ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -920,7 +920,7 @@ exports[`progress demo > renders circle correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="100"
-    class="ant-progress ant-progress-status-success ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-success ant-progress-circle ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -1356,7 +1356,7 @@ exports[`progress demo > renders circle-steps correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="50"
-      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-steps ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-steps ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -1455,7 +1455,7 @@ exports[`progress demo > renders circle-steps correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="100"
-      class="ant-progress ant-progress-status-success ant-progress-circle ant-progress-steps ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-success ant-progress-circle ant-progress-steps ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -1724,7 +1724,7 @@ exports[`progress demo > renders dashboard correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="30"
-    class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -1790,7 +1790,7 @@ exports[`progress demo > renders dynamic correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="0"
-      class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -1821,7 +1821,7 @@ exports[`progress demo > renders dynamic correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="0"
-      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -1952,7 +1952,7 @@ exports[`progress demo > renders format correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="75"
-    class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -2008,7 +2008,7 @@ exports[`progress demo > renders format correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="100"
-    class="ant-progress ant-progress-status-success ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-success ant-progress-circle ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -2071,7 +2071,7 @@ exports[`progress demo > renders gradient-line correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="99"
-    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -2102,7 +2102,7 @@ exports[`progress demo > renders gradient-line correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="50"
-    class="ant-progress ant-progress-status-active ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-active ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -2136,7 +2136,7 @@ exports[`progress demo > renders gradient-line correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="90"
-      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -2214,7 +2214,7 @@ exports[`progress demo > renders gradient-line correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="100"
-      class="ant-progress ant-progress-status-success ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-success ant-progress-circle ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -2309,7 +2309,7 @@ exports[`progress demo > renders gradient-line correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="93"
-      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -2391,7 +2391,7 @@ exports[`progress demo > renders gradient-line correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="90"
-      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -2469,7 +2469,7 @@ exports[`progress demo > renders gradient-line correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="100"
-      class="ant-progress ant-progress-status-success ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-success ant-progress-circle ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -2564,7 +2564,7 @@ exports[`progress demo > renders gradient-line correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="93"
-      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -2800,7 +2800,7 @@ exports[`progress demo > renders info-position correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="60"
-    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-start ant-progress-line-position-outer ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-start ant-progress-line-position-outer ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -2831,7 +2831,7 @@ exports[`progress demo > renders info-position correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="100"
-    class="ant-progress ant-progress-status-success ant-progress-line ant-progress-line-align-start ant-progress-line-position-outer ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-success ant-progress-line ant-progress-line-align-start ant-progress-line-position-outer ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -2910,7 +2910,7 @@ exports[`progress demo > renders info-position correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="100"
-    class="ant-progress ant-progress-status-success ant-progress-line ant-progress-line-align-center ant-progress-line-position-outer ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-success ant-progress-line ant-progress-line-align-center ant-progress-line-position-outer ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -2965,7 +2965,7 @@ exports[`progress demo > renders line correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="30"
-    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -2996,7 +2996,7 @@ exports[`progress demo > renders line correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="50"
-    class="ant-progress ant-progress-status-active ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-active ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -3027,7 +3027,7 @@ exports[`progress demo > renders line correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="70"
-    class="ant-progress ant-progress-status-exception ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-exception ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -3076,7 +3076,7 @@ exports[`progress demo > renders line correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="100"
-    class="ant-progress ant-progress-status-success ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-success ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -3124,7 +3124,7 @@ exports[`progress demo > renders line correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="50"
-    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer css-var-root"
     role="progressbar"
   >
     <div
@@ -3324,7 +3324,7 @@ exports[`progress demo > renders linecap correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="75"
-    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -3358,7 +3358,7 @@ exports[`progress demo > renders linecap correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="75"
-      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -3414,7 +3414,7 @@ exports[`progress demo > renders linecap correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="75"
-      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -3478,7 +3478,7 @@ exports[`progress demo > renders segment correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="30"
-    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -3516,7 +3516,7 @@ exports[`progress demo > renders segment correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="30"
-      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -3573,7 +3573,7 @@ exports[`progress demo > renders segment correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="30"
-      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -3642,7 +3642,7 @@ exports[`progress demo > renders size correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="50"
-      class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -3739,7 +3739,7 @@ exports[`progress demo > renders size correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="50"
-      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -3908,7 +3908,7 @@ exports[`progress demo > renders size correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="50"
-      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-circle ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -4077,7 +4077,7 @@ exports[`progress demo > renders size correctly 1`] = `
       aria-valuemax="100"
       aria-valuemin="0"
       aria-valuenow="50"
-      class="ant-progress ant-progress-status-normal ant-progress-steps ant-progress-show-info ant-progress-default css-var-root"
+      class="ant-progress ant-progress-status-normal ant-progress-steps ant-progress-show-info css-var-root"
       role="progressbar"
     >
       <div
@@ -4205,7 +4205,7 @@ exports[`progress demo > renders steps correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="50"
-    class="ant-progress ant-progress-status-normal ant-progress-steps ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-steps ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -4235,7 +4235,7 @@ exports[`progress demo > renders steps correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="30"
-    class="ant-progress ant-progress-status-normal ant-progress-steps ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-steps ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -4328,7 +4328,7 @@ exports[`progress demo > renders steps correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="60"
-    class="ant-progress ant-progress-status-normal ant-progress-steps ant-progress-show-info ant-progress-default css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-steps ant-progress-show-info css-var-root"
     role="progressbar"
   >
     <div
@@ -4373,7 +4373,7 @@ exports[`progress demo > renders style-class correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="10"
-    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default demo-progress-root css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info demo-progress-root css-var-root"
     role="progressbar"
   >
     <div
@@ -4404,7 +4404,7 @@ exports[`progress demo > renders style-class correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="20"
-    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default demo-progress-root css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info demo-progress-root css-var-root"
     role="progressbar"
   >
     <div
@@ -4435,7 +4435,7 @@ exports[`progress demo > renders style-class correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="40"
-    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default demo-progress-root css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info demo-progress-root css-var-root"
     role="progressbar"
   >
     <div
@@ -4466,7 +4466,7 @@ exports[`progress demo > renders style-class correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="60"
-    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default demo-progress-root css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info demo-progress-root css-var-root"
     role="progressbar"
   >
     <div
@@ -4497,7 +4497,7 @@ exports[`progress demo > renders style-class correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="80"
-    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default demo-progress-root css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info demo-progress-root css-var-root"
     role="progressbar"
   >
     <div
@@ -4528,7 +4528,7 @@ exports[`progress demo > renders style-class correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="99"
-    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info ant-progress-default demo-progress-root css-var-root"
+    class="ant-progress ant-progress-status-normal ant-progress-line ant-progress-line-align-end ant-progress-line-position-outer ant-progress-show-info demo-progress-root css-var-root"
     role="progressbar"
   >
     <div

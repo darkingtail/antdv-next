@@ -16,9 +16,12 @@ interface ComponentsBlockProps {
   style?: CSSProperties
   className?: string
   containerClassName?: string
+  inherit?: boolean
 }
 
-defineProps<ComponentsBlockProps>()
+const props = withDefaults(defineProps<ComponentsBlockProps>(), {
+  inherit: false,
+})
 
 const ModalPanel = (Modal as any)._InternalPanelDoNotUseOrYouWillBeFired
 
@@ -36,6 +39,17 @@ const useStyle = createStyles(({ css, cssVar }) => {
 
 const { styles } = useStyle()
 const { t } = useLocale()
+
+const mergedConfig = computed<ConfigProviderProps>(() => {
+  const { theme, ...restConfig } = props.config || {}
+  return {
+    ...restConfig,
+    theme: {
+      ...theme,
+      inherit: props.inherit,
+    },
+  }
+})
 
 const dropdownItems = computed(() =>
   Array.from({ length: 5 }).map((_, index) => ({
@@ -67,10 +81,16 @@ const radioOptions = computed(() => [
   t('homePage.componentsBlock.apple'),
   t('homePage.componentsBlock.banana'),
 ])
+
+const segmentedOptions = computed(() => [
+  t('homePage.componentsBlock.segmentedDaily'),
+  t('homePage.componentsBlock.segmentedWeekly'),
+  t('homePage.componentsBlock.segmentedMonthly'),
+])
 </script>
 
 <template>
-  <a-config-provider v-bind="config">
+  <a-config-provider v-bind="mergedConfig">
     <a-card :class="[containerClassName, styles.container]">
       <a-app>
         <a-flex vertical gap="middle" :style="style" :class="className">
@@ -94,9 +114,22 @@ const radioOptions = computed(() => [
               </a-space-compact>
             </div>
 
-            <a-color-picker style="flex: none;" />
+            <a-color-picker show-text default-value="#1677ff" style="flex: none;" />
 
             <a-select
+              style="flex: auto;"
+              mode="multiple"
+              max-tag-count="responsive"
+              :default-value="['apple', 'banana']"
+              :options="selectOptions"
+            />
+          </a-flex>
+
+          <a-flex gap="middle">
+            <a-date-picker variant="filled" />
+
+            <a-select
+              variant="filled"
               style="flex: auto;"
               mode="multiple"
               max-tag-count="responsive"
@@ -109,17 +142,7 @@ const radioOptions = computed(() => [
 
           <a-steps :current="1" :items="stepsItems" />
 
-          <a-slider
-            style="margin-inline: 20px;"
-            range
-            :marks="{
-              0: '0°C',
-              26: '26°C',
-              37: '37°C',
-              100: { style: { color: '#f50' }, label: '100°C' },
-            }"
-            :default-value="[26, 37]"
-          />
+          <a-slider :default-value="50" />
 
           <a-flex gap="middle">
             <a-button type="primary" :class="styles.flexAuto">
@@ -137,7 +160,7 @@ const radioOptions = computed(() => [
           </a-flex>
 
           <a-flex gap="middle">
-            <a-switch default-checked style="width: 48px;">
+            <a-switch :default-value="true" style="width: 48px;">
               <template #checkedChildren>
                 <CheckOutlined />
               </template>
@@ -153,6 +176,21 @@ const radioOptions = computed(() => [
               :default-value="t('homePage.componentsBlock.apple')"
               :options="radioOptions"
             />
+          </a-flex>
+
+          <a-flex gap="middle" align="center">
+            <a-radio-group default-value="a">
+              <a-radio-button value="a">
+                A
+              </a-radio-button>
+              <a-radio-button value="b">
+                B
+              </a-radio-button>
+              <a-radio-button value="c">
+                C
+              </a-radio-button>
+            </a-radio-group>
+            <a-segmented :default-value="t('homePage.componentsBlock.segmentedDaily')" :options="segmentedOptions" />
           </a-flex>
         </a-flex>
       </a-app>

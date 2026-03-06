@@ -72,6 +72,9 @@ export default {
     icon: 'Icon',
     hello: 'Hello, Antdv Next!',
     release: 'Antdv Next 1.0 is released!',
+    segmentedDaily: 'Daily',
+    segmentedWeekly: 'Weekly',
+    segmentedMonthly: 'Monthly',
   },
 
   previewThemes: {

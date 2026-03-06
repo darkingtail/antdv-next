@@ -4,7 +4,6 @@ import { computed, ref, watch } from 'vue'
 import { useLocale } from '@/composables/use-locale'
 import { useAppStore } from '@/stores/app.ts'
 import Group from '../group/index.vue'
-import BackgroundImage from './background-image.vue'
 import ComponentsBlock from './components-block.vue'
 import { usePreviewThemes } from './preview-theme'
 
@@ -92,32 +91,32 @@ function handleThemeKeyDown(event: KeyboardEvent, name: string) {
     id="flexible"
     :title="t('homePage.theme.themeTitle')"
     :description="t('homePage.theme.themeDesc')"
+    :background="activeTheme?.bgImg"
+    :background-prefetch-list="backgroundPrefetchList"
     :title-color="activeTheme?.bgImgDark ? '#fff' : undefined"
   >
     <a-flex class="theme-container" gap="large">
-      <div class="theme-list" role="tablist" aria-label="Theme selection">
-        <div
-          v-for="item in previewThemes"
-          :key="item.name"
-          class="theme-list-item"
-          :class="{
-            active: activeName === item.name,
-            dark: activeTheme?.bgImgDark,
-          }"
-          role="tab"
-          :tabindex="activeName === item.name ? 0 : -1"
-          :aria-selected="activeName === item.name"
-          @click="handleThemeClick(item.name)"
-          @keydown="(event) => handleThemeKeyDown(event, item.name)"
-        >
-          {{ item.name }}
+      <div style="display: flex;">
+        <div class="theme-list" role="tablist" aria-label="Theme selection">
+          <div
+            v-for="item in previewThemes"
+            :key="item.name"
+            class="theme-list-item"
+            :class="{
+              active: activeName === item.name,
+              dark: activeTheme?.bgImgDark,
+            }"
+            role="tab"
+            :tabindex="activeName === item.name ? 0 : -1"
+            :aria-selected="activeName === item.name"
+            style="margin-bottom: 8px;"
+            @click="handleThemeClick(item.name)"
+            @keydown="(event) => handleThemeKeyDown(event, item.name)"
+          >
+            {{ item.name }}
+          </div>
         </div>
       </div>
-
-      <BackgroundImage
-        :src="activeTheme?.bgImg"
-        :is-light="!activeTheme?.bgImgDark"
-      />
 
       <ComponentsBlock
         :key="activeName"
@@ -143,7 +142,7 @@ function handleThemeKeyDown(event: KeyboardEvent, name: string) {
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  gap: var(--ant-padding-md);
+  gap: var(--ant-padding-sm);
 }
 
 .theme-list-item {
@@ -156,6 +155,7 @@ function handleThemeKeyDown(event: KeyboardEvent, name: string) {
   border-radius: var(--ant-border-radius);
   border-color: transparent;
   transition: all var(--ant-motion-duration-mid) var(--ant-motion-ease-in-out);
+  cursor: pointer;
 }
 
 .theme-list-item:hover:not(.active) {

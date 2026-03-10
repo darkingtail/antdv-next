@@ -32,7 +32,6 @@ export default function useSizes(items: Ref<PanelProps[]>, containerSize?: Ref<n
 
   const sizes = computed(() => {
     const currentCount = itemsCount.value
-    const mergedSizes: PanelProps['size'][] = []
 
     // Initialize or re-initialize innerSizes when items count changes
     // This happens on first render or when panels are added/removed
@@ -41,11 +40,12 @@ export default function useSizes(items: Ref<PanelProps[]>, containerSize?: Ref<n
       innerSizes.value = items.value?.map(item => item.defaultSize)
     }
 
-    for (let i = 0; i < currentCount; i += 1) {
-      mergedSizes[i] = propSizes.value?.[i] ?? innerSizes.value?.[i]
-    }
-
-    return mergedSizes
+    // If any panel has a defined size prop, use all propSizes
+    // (let undefined values be handled by autoPtgSizes).
+    // Otherwise fall back to innerSizes.
+    return propSizes.value.some(size => size != null)
+      ? propSizes.value
+      : innerSizes.value
   })
 
   const postPercentMinSizes = computed(() => {

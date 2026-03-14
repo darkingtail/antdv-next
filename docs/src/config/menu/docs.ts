@@ -17,6 +17,7 @@ function flattenDocsLocales(nestedLocales: Menu) {
     '/docs/vue/skills': vue.skills,
     '/docs/vue/nuxt': vue.nuxt,
     '/docs/vue/advanced/use': vue.advancedUse,
+    '/docs/vue/secondary-development': vue.secondaryDevelopment,
     '/docs/vue/customize-theme': vue.customizeTheme,
     '/docs/vue/compatible-style': vue.compatibleStyle,
     '/docs/vue/i18n': vue.i18n,
@@ -86,6 +87,11 @@ export const docsMenus: Record<string, AntdvMenuItem[]> = {
       label: '/docs/vue/advanced/use',
       type: 'group',
       children: [
+        {
+          key: '/docs/vue/secondary-development',
+          label: '/docs/vue/secondary-development',
+          tag: 'New',
+        },
         {
           key: '/docs/vue/customize-theme',
           label: '/docs/vue/customize-theme',

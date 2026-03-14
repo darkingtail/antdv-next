@@ -20,6 +20,7 @@ const menuLocales = {
       skills: 'Skills',
       nuxt: 'Nuxt',
       advancedUse: 'Advanced Usage',
+      secondaryDevelopment: 'Secondary Development',
       customizeTheme: 'Customize Theme',
       compatibleStyle: 'Compatible Style',
       i18n: 'I18n',

@@ -148,6 +148,8 @@ export const genImagePreviewStyle: GenerateStyle<ImageToken, CSSObject> = (token
         inset: 0,
         position: 'absolute',
         background: colorBgMask,
+        backdropFilter: 'blur(0px)',
+        transition: `backdrop-filter ${motionDurationSlow}`,
         [`&${componentCls}-preview-mask-blur`]: {
           backdropFilter: 'blur(4px)',
         },
@@ -175,8 +177,11 @@ export const genImagePreviewStyle: GenerateStyle<ImageToken, CSSObject> = (token
         maxHeight: '70%',
         verticalAlign: 'middle',
         transform: 'scale3d(1, 1, 1)',
-        cursor: 'grab',
         transition: `transform ${motionDurationSlow} ${motionEaseOut} 0s`,
+      },
+
+      [`&-movable ${previewCls}-img`]: {
+        cursor: 'grab',
       },
 
       [`&-moving ${previewCls}-img`]: {

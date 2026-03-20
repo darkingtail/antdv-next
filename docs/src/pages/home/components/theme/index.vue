@@ -26,6 +26,8 @@ const activeTheme = computed(() => {
   return previewThemes.value.find(item => item.name === activeName.value) ?? previewThemes.value[0]
 })
 
+const isThemeListDark = computed(() => !!activeTheme.value?.bgImgDark)
+
 const backgroundPrefetchList = computed(() => {
   return previewThemes.value
     .map(item => item.bgImg)
@@ -97,14 +99,13 @@ function handleThemeKeyDown(event: KeyboardEvent, name: string) {
   >
     <a-flex class="theme-container" gap="large">
       <div style="display: flex;">
-        <div class="theme-list" role="tablist" aria-label="Theme selection">
+        <div class="theme-list" :class="{ 'theme-list-dark': isThemeListDark }" role="tablist" aria-label="Theme selection">
           <div
             v-for="item in previewThemes"
             :key="item.name"
             class="theme-list-item"
             :class="{
               active: activeName === item.name,
-              dark: activeTheme?.bgImgDark,
             }"
             role="tab"
             :tabindex="activeName === item.name ? 0 : -1"
@@ -136,6 +137,8 @@ function handleThemeKeyDown(event: KeyboardEvent, name: string) {
 }
 
 .theme-list {
+  --theme-list-text-color: rgba(0, 0, 0, 0.88);
+
   flex: auto;
   margin: 0;
   padding: 0;
@@ -145,10 +148,15 @@ function handleThemeKeyDown(event: KeyboardEvent, name: string) {
   gap: var(--ant-padding-sm);
 }
 
+.theme-list.theme-list-dark {
+  --theme-list-text-color: var(--ant-color-text-light-solid);
+}
+
 .theme-list-item {
   margin: 0;
   font-size: var(--ant-font-size-lg);
   line-height: var(--ant-line-height-lg);
+  color: var(--theme-list-text-color);
   padding-block: var(--ant-padding);
   padding-inline: var(--ant-padding-lg);
   border: var(--ant-line-width) var(--ant-line-type) var(--ant-color-border-secondary);
@@ -161,6 +169,7 @@ function handleThemeKeyDown(event: KeyboardEvent, name: string) {
 .theme-list-item:hover:not(.active) {
   border-color: var(--ant-color-primary-border);
   background-color: var(--ant-color-primary-bg);
+  color: var(--ant-color-text-light-solid);
   cursor: pointer;
 }
 
@@ -175,15 +184,14 @@ function handleThemeKeyDown(event: KeyboardEvent, name: string) {
   color: var(--ant-color-primary);
 }
 
-.theme-list-item.dark {
-  color: var(--ant-color-text-light-solid);
+.theme-list.theme-list-dark .theme-list-item:hover,
+.theme-list.theme-list-dark .theme-list-item.active {
+  border-color: var(--ant-color-text-light-solid);
   background-color: transparent;
 }
 
-.theme-list-item.dark:hover,
-.theme-list-item.dark.active {
-  border-color: var(--ant-color-text-light-solid);
-  background-color: transparent;
+.theme-list.theme-list-dark .theme-list-item.active {
+  color: var(--ant-color-text-light-solid);
 }
 
 .components-block {

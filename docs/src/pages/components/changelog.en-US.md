@@ -2,6 +2,41 @@
 title: Component Changelog
 ---
 
+## V1.1.6
+
+This release focuses on **fixing styling and interaction details across Menu, Divider, and Image**, while also **improving the Modal docs, dark-mode contrast logic, and the theme preview experience**. It also adds dark-themed payment QR codes to the sponsor page to expand community support options.
+
+**✨ Features**
+
+* feat(sponsor): add darkingtail payment QR codes with dark-theme presentation by @darkingtail in [#395](https://github.com/antdv-next/antdv-next/pull/395)
+* feat(preview-theme): use `antdv-style` for theme preview and support copying theme code by @ffgenius in [#397](https://github.com/antdv-next/antdv-next/pull/397)
+
+**🐞 Fixes**
+
+* fix(menu): align collapsed icons when using custom `collapsedIconSize` by @wxfengg in [#385](https://github.com/antdv-next/antdv-next/pull/385)
+* fix: fix focus trap by @aibayanyu20 in [#389](https://github.com/antdv-next/antdv-next/pull/389)
+* fix(divider): fix `class` attrs not being applied correctly when passed through attrs by @cc-hearts in [#394](https://github.com/antdv-next/antdv-next/pull/394)
+* fix: fix initial Menu highlight state by @aibayanyu20 in [#396](https://github.com/antdv-next/antdv-next/pull/396)
+* fix(image): fix mask blur behavior when `mask` is `true` by @448847482 in [#398](https://github.com/antdv-next/antdv-next/pull/398)
+
+**📝 Documentation**
+
+* docs: fix missing Modal documentation parameters by @jauqasx in [#388](https://github.com/antdv-next/antdv-next/pull/388)
+* fix(docs): refine theme picker contrast logic for dark mode by @wxfengg in [#392](https://github.com/antdv-next/antdv-next/pull/392)
+
+---
+
+**👏 New Contributors**
+
+Thanks to the following contributors for their first contributions:
+
+* @wxfengg in [#385](https://github.com/antdv-next/antdv-next/pull/385)
+* @448847482 in [#398](https://github.com/antdv-next/antdv-next/pull/398)
+
+**Full Changelog**
+https://github.com/antdv-next/antdv-next/compare/antdv-next@1.1.5...antdv-next@1.1.6
+
+
 ## V1.1.5
 
 This release focuses on **fixing rendering, styling, and interaction issues across Select, Layout, Grid, Form, and Image**, while also **improving local Playground debugging and expanding documentation content**. It also adds a WeChat official account QR code entry and includes documentation description updates together with a dynamic placeholder fix.

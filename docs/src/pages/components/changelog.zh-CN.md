@@ -2,6 +2,41 @@
 title: 组件更新日志
 ---
 
+## V1.1.6
+
+本次版本主要聚焦于 **修复 Menu / Divider / Image 等组件在样式与交互细节上的问题**，并进一步 **完善 Modal 文档、暗色主题对比度逻辑与主题预览体验**。同时新增赞助页暗色风格收款二维码，补充社区支持入口。
+
+**✨ 新功能 Features**
+
+* feat(sponsor)：新增 darkingtail 的收款二维码，并适配暗色风格展示 by @darkingtail [#395](https://github.com/antdv-next/antdv-next/pull/395)
+* feat(preview-theme)：主题预览改用 `antdv-style`，并同步复制主题代码能力 by @ffgenius [#397](https://github.com/antdv-next/antdv-next/pull/397)
+
+**🐞 问题修复 Fixes**
+
+* fix(menu)：在自定义 `collapsedIconSize` 场景下对齐折叠态图标 by @wxfengg [#385](https://github.com/antdv-next/antdv-next/pull/385)
+* fix：修复 focus trap 问题 by @aibayanyu20 [#389](https://github.com/antdv-next/antdv-next/pull/389)
+* fix(divider)：修复通过 attrs 传入 `class` 时未正确应用的问题 by @cc-hearts [#394](https://github.com/antdv-next/antdv-next/pull/394)
+* fix：修复 Menu 首次高亮状态问题 by @aibayanyu20 [#396](https://github.com/antdv-next/antdv-next/pull/396)
+* fix(image)：修复 `mask` 为 `true` 时的模糊遮罩表现 by @448847482 [#398](https://github.com/antdv-next/antdv-next/pull/398)
+
+**📝 文档更新 Documentation**
+
+* docs：修复 Modal 文档参数缺失问题 by @jauqasx [#388](https://github.com/antdv-next/antdv-next/pull/388)
+* fix(docs)：优化暗色模式下主题选择器的对比度逻辑 by @wxfengg [#392](https://github.com/antdv-next/antdv-next/pull/392)
+
+---
+
+**👏 新贡献者 New Contributors**
+
+感谢以下社区贡献者的首次参与：
+
+* @wxfengg（[#385](https://github.com/antdv-next/antdv-next/pull/385)）
+* @448847482（[#398](https://github.com/antdv-next/antdv-next/pull/398)）
+
+**Full Changelog**
+https://github.com/antdv-next/antdv-next/compare/antdv-next@1.1.5...antdv-next@1.1.6
+
+
 ## V1.1.5
 
 本次版本主要聚焦于 **修复 Select / Layout / Grid / Form / Image 等组件的渲染、样式与交互问题**，并进一步 **增强 Playground 本地联调能力与补充文档内容**。同时新增公众号二维码入口，并同步修正文档描述与动态占位符相关问题。
